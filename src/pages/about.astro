@@ -1,0 +1,25 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+---
+
+<PageLayout title="About | Marcus Schimizzi" description="Hi there! My name is Marcus. I'm a software engineer at Qualia working to make real estate transactions easier and more efficient.">
+    <div class="flex flex-col lg:flex-row gap-8 items-start">
+        <img
+            src="/images/portrait.jpg"
+            alt="Marcus Schimizzi"
+            class="w-64 lg:w-96 aspect-square object-cover border-4 border-primary-500 rounded-md"
+        />
+        <div class="flex-1 space-y-4">
+            <h2 class="text-3xl font-bold">Who am I?</h2>
+            <p>Hi there! My name is Marcus.</p>
+            <p>I'm currently employed as a software engineer at Qualia working to make real estate transactions easier and more efficient.</p>
+            <p>Outside of building software, I love to spend time traveling, reading (mostly nonfiction and biographies), worrying too much about my favorite sports teams, and cooking.</p>
+            <a
+                href="/docs/resume.pdf"
+                class="inline-block mt-4 px-6 py-3 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors"
+            >
+                Download Resume
+            </a>
+        </div>
+    </div>
+</PageLayout>
