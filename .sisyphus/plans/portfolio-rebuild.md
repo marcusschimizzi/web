@@ -371,7 +371,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 3. Base Layout, SEO Head, and Global Styles
+- [x] 3. Base Layout, SEO Head, and Global Styles
 
   **What to do**:
   - Create `src/layouts/BaseLayout.astro`:
@@ -464,7 +464,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 4. Navigation Component
+- [x] 4. Navigation Component
 
   **What to do**:
   - Create `src/components/Nav.astro`:
@@ -539,7 +539,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 5. Footer Component
+- [x] 5. Footer Component
 
   **What to do**:
   - Create `src/components/Footer.astro`:
@@ -608,7 +608,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 6. Home Page with Hero Section
+- [x] 6. Home Page with Hero Section
 
   **What to do**:
   - Create `src/pages/index.astro`:
@@ -694,7 +694,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 7. About Page
+- [x] 7. About Page
 
   **What to do**:
   - Create `src/pages/about.astro`:
@@ -754,7 +754,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 8. Content Collections Setup (Blog + Projects)
+- [x] 8. Content Collections Setup (Blog + Projects)
 
   **What to do**:
   - Create `src/content.config.ts` (Astro 5 Content Layer API):
@@ -854,7 +854,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 9. Experience Page
+- [x] 9. Experience Page
 
   **What to do**:
   - Create `src/pages/experience.astro`:
@@ -928,7 +928,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 10. Projects Listing and Detail Pages
+- [x] 10. Projects Listing and Detail Pages
 
   **What to do**:
   - Create `src/pages/projects/index.astro`:
@@ -1010,7 +1010,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 11. Blog Listing, Post Pages, and Tag Pages
+- [x] 11. Blog Listing, Post Pages, and Tag Pages
 
   **What to do**:
   - Create `src/pages/blog/index.astro`:
@@ -1105,7 +1105,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 12. Contact Page with Netlify Forms
+- [x] 12. Contact Page with Netlify Forms
 
   **What to do**:
   - Create `src/pages/contact.astro`:
@@ -1178,7 +1178,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 13. RSS Feed and Sitemap
+- [x] 13. RSS Feed and Sitemap
 
   **What to do**:
   - Create `src/pages/rss.xml.ts`:
@@ -1252,7 +1252,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 14. Fathom Analytics and ViewTransitions
+- [x] 14. Fathom Analytics and ViewTransitions
 
   **What to do**:
   - Add Fathom analytics script to `src/layouts/BaseLayout.astro`:
@@ -1335,7 +1335,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 15. SEO Hardening Across All Pages
+- [x] 15. SEO Hardening Across All Pages
 
   **What to do**:
   - Audit and ensure every page has complete SEO meta via the SEOHead component:
@@ -1419,7 +1419,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 16. Responsive Design Pass and Mobile Navigation
+- [x] 16. Responsive Design Pass and Mobile Navigation
 
   **What to do**:
   - Audit all pages at three breakpoints:
@@ -1497,7 +1497,7 @@ Parallel Speedup: ~45% faster than sequential
 
 ---
 
-- [ ] 17. Final Polish, Build Verification, and Lighthouse Audit
+- [x] 17. Final Polish, Build Verification, and Lighthouse Audit
 
   **What to do**:
   - Run `npx astro build` and verify zero errors, zero warnings
