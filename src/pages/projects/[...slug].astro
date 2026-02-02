@@ -1,0 +1,90 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '@layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+    const projects = await getCollection('projects');
+    return projects.map((project) => ({
+        params: { slug: project.id },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const {
+    title,
+    description,
+    thumbnail,
+    demoVideo,
+    link,
+    technologies,
+} = project.data;
+---
+
+<PageLayout title={`${title} | Marcus Schimizzi`} description={description}>
+    <!-- Back link -->
+    <a href="/projects" class="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Projects</span>
+    </a>
+
+    <!-- Hero thumbnail -->
+    {thumbnail && (
+        <img
+            src={thumbnail}
+            alt={title}
+            class="w-full rounded-xl mb-8 border border-gray-800"
+        />
+    )}
+
+    <!-- Title and description -->
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
+    <p class="text-xl text-gray-400 mb-8">{description}</p>
+
+    <!-- Demo video -->
+    {demoVideo && (
+        <video
+            src={demoVideo}
+            controls
+            muted
+            loop
+            playsinline
+            class="w-full rounded-lg mb-8 border border-gray-800"
+        />
+    )}
+
+    <!-- External link button -->
+    {link && (
+        <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors mb-8"
+        >
+            <span>Visit Project</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+        </a>
+    )}
+
+    <!-- Technologies -->
+    {technologies && technologies.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-8">
+            {technologies.map((tech) => (
+                <span class="px-3 py-1 text-sm font-medium text-blue-300 bg-blue-500/10 border border-blue-500/20 rounded-full">
+                    {tech}
+                </span>
+            ))}
+        </div>
+    )}
+
+    <!-- MDX content -->
+    <div class="prose prose-invert prose-lg max-w-none">
+        <Content />
+    </div>
+</PageLayout>
