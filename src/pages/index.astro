@@ -1,14 +1,128 @@
 ---
+import PageLayout from '@layouts/PageLayout.astro';
+import Epithets from '@components/Epithets.astro';
+import SocialLinks from '@components/SocialLinks.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Marcus Schimizzi</title>
-    </head>
-    <body>
-        <h1>Welcome</h1>
-    </body>
-</html>
+<PageLayout
+    title="Marcus Schimizzi"
+    description="Software engineer, lifelong learner, and tinkerer based in Chicago."
+>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-heading">Hi, I'm Marcus.</h1>
+            <Epithets />
+            <div class="mt-8">
+                <SocialLinks />
+            </div>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+        <div class="highlights-container">
+            <a href="/projects" class="highlight-card">
+                <h2 class="highlight-title">Projects</h2>
+                <p class="highlight-text">See what I've built</p>
+            </a>
+            <a href="/blog" class="highlight-card">
+                <h2 class="highlight-title">Blog</h2>
+                <p class="highlight-text">Read my thoughts</p>
+            </a>
+            <a href="/experience" class="highlight-card">
+                <h2 class="highlight-title">Experience</h2>
+                <p class="highlight-text">View my journey</p>
+            </a>
+        </div>
+    </section>
+</PageLayout>
+
+<style>
+    .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(-45deg, #1f5abd, #8910a8, #5435b3, #48c774);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        margin-top: -6rem;
+        padding-top: 6rem;
+        position: relative;
+    }
+
+    .hero-content {
+        text-align: center;
+        color: white;
+        padding: 2rem;
+    }
+
+    .hero-heading {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+        .hero-heading {
+            font-size: 3.75rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-heading {
+            font-size: 4.5rem;
+        }
+    }
+
+    .highlights-section {
+        padding: 4rem 2rem;
+        background: white;
+    }
+
+    .highlights-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .highlights-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .highlight-card {
+        background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        padding: 2rem;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        display: block;
+    }
+
+    .highlight-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        border-color: #818cf8;
+    }
+
+    .highlight-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+        background: linear-gradient(160deg, #1F5ABD 0%, #8910A8 50%, #5435B3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .highlight-text {
+        font-size: 1rem;
+        color: #6b7280;
+        margin: 0;
+    }
+</style>
