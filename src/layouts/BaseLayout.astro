@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import SEOHead from '@/components/SEOHead.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
     title: string;
@@ -36,8 +37,11 @@ const { title, description, image, url, type, publishedTime, tags } = Astro.prop
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-        <!-- Fathom analytics (Task 14) -->
-    </head>
+         <link rel="alternate" type="application/rss+xml" title="Marcus Schimizzi's Blog" href="/rss.xml" />
+         <link rel="sitemap" href="/sitemap-index.xml" />
+         <ClientRouter />
+         <script src="https://cdn.usefathom.com/script.js" data-site="FOJEAWOJ" data-spa="auto" defer></script>
+      </head>
     <body class="bg-[#232323] text-white font-sans min-h-screen">
         <slot />
     </body>
