@@ -1,13 +1,17 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Nav from '@components/Nav.astro';
+import Footer from '@components/Footer.astro';
 import Epithets from '@components/Epithets.astro';
 import SocialLinks from '@components/SocialLinks.astro';
 ---
 
-<PageLayout
+<BaseLayout
     title="Marcus Schimizzi"
     description="Software engineer, lifelong learner, and tinkerer based in Chicago."
 >
+    <Nav />
+    <!-- Hero: full-bleed, no container constraint -->
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="hero-heading">Hi, I'm Marcus.</h1>
@@ -34,7 +38,8 @@ import SocialLinks from '@components/SocialLinks.astro';
             </a>
         </div>
     </section>
-</PageLayout>
+    <Footer />
+</BaseLayout>
 
 <style>
     .hero-section {
@@ -77,7 +82,6 @@ import SocialLinks from '@components/SocialLinks.astro';
 
     .highlights-section {
         padding: 4rem 2rem;
-        background: white;
     }
 
     .highlights-container {
@@ -95,8 +99,8 @@ import SocialLinks from '@components/SocialLinks.astro';
     }
 
     .highlight-card {
-        background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-        border: 1px solid #e5e7eb;
+        background: rgb(17 24 39 / 0.5);
+        border: 1px solid rgb(31 41 55);
         border-radius: 1rem;
         padding: 2rem;
         text-decoration: none;
@@ -106,8 +110,8 @@ import SocialLinks from '@components/SocialLinks.astro';
 
     .highlight-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        border-color: #818cf8;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+        border-color: rgb(31 90 189);
     }
 
     .highlight-title {
@@ -122,7 +126,7 @@ import SocialLinks from '@components/SocialLinks.astro';
 
     .highlight-text {
         font-size: 1rem;
-        color: #6b7280;
+        color: rgb(156 163 175);
         margin: 0;
     }
 </style>
