@@ -1,0 +1,74 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import ExperienceEntry from '@components/ExperienceEntry.astro';
+---
+
+<PageLayout
+    title="Experience | Marcus Schimizzi"
+    description="Software engineer with experience at Qualia, Qualtrics, Ford Motor Company, and freelance web development."
+>
+    <div class="max-w-4xl mx-auto">
+        <!-- Experience Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-white mb-8">Experience</h2>
+
+            <ExperienceEntry
+                institution="Qualia"
+                role="Software Engineer"
+                startDate="December 2024"
+                endDate="Now"
+                description="I work on the Connect team, making it easier for agents, buyers, and sellers to communicate during the home buying process."
+                image="/images/qualia.png"
+            />
+
+            <ExperienceEntry
+                institution="Qualtrics"
+                role="Software Development Engineer"
+                startDate="August 2019"
+                endDate="March 2024"
+                description="I worked on the Data Visualization team, building out new features for the Qualtrics XM Platform. I worked full-stack with a slight emphasis on the front-end, using technologies like React, Typescript, D3, and Golang."
+                image="/images/xm.png"
+            />
+
+            <ExperienceEntry
+                institution="Ford Motor Company"
+                role="Software Engineering Intern"
+                startDate="May 2018"
+                endDate="August 2018"
+                description="I worked on a team building a gamified application to help call center employees train and onboard. I worked full-stack, building out the front-end (Javascript & React) and the back-end (Java & Springboot) of the application."
+                image="/images/ford.svg"
+            />
+
+            <ExperienceEntry
+                institution="Self Employed"
+                role="Freelance Web Developer"
+                startDate="May 2014"
+                endDate="August 2019"
+                description="I have worked on a variety of projects, building websites and small web applications for clients. I gained experience with a number of technologies, including HTML, CSS, Javascript, React, Node.js, PHP, and MongoDB. I also learned a lot about working with clients and managing projects."
+                image="/images/logo.svg"
+            />
+        </section>
+
+        <!-- Education Section -->
+        <section>
+            <h2 class="text-3xl font-bold text-white mb-8">Education</h2>
+
+            <ExperienceEntry
+                institution="University of Notre Dame"
+                role="B.S.E. in Computer Science"
+                startDate="August 2015"
+                endDate="May 2019"
+                description="I graduated from the University of Notre Dame with a B.S.E. in Computer Science. I took a variety of courses in computer science, mathematics, and engineering."
+                image="/images/notredame.jpg"
+            />
+
+            <ExperienceEntry
+                institution="London, UK"
+                role="London Study Abroad"
+                startDate="January 2018"
+                endDate="May 2018"
+                description="During my time at the University of Notre Dame, I got the chance to spend a semester abroad in London. It was a great experience and London remains one of my favorite cities."
+            />
+        </section>
+    </div>
+</PageLayout>

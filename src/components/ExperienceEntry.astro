@@ -1,0 +1,37 @@
+---
+interface Props {
+    institution: string;
+    role: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    image?: string;
+}
+
+const { institution, role, startDate, endDate, description, image } = Astro.props;
+---
+
+<article class="relative pl-8 pb-8 border-l-2 border-gray-700 last:pb-0">
+    <!-- Timeline dot -->
+    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 border-4 border-gray-900"></div>
+
+    <!-- Logo and content container -->
+    <div class="flex gap-4">
+        <!-- Logo -->
+        {image && (
+            <img
+                src={image}
+                alt={`${institution} logo`}
+                class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-contain bg-gray-800/50 p-1 flex-shrink-0"
+            />
+        )}
+
+        <!-- Content -->
+        <div class="flex-1">
+            <h3 class="text-lg font-semibold text-white">{role}</h3>
+            <p class="text-primary-400">{institution}</p>
+            <p class="text-sm text-gray-400 mt-1">{startDate} — {endDate}</p>
+            <p class="text-gray-300 mt-3 leading-relaxed">{description}</p>
+        </div>
+    </div>
+</article>
