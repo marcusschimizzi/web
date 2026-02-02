@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    /* Color palette as CSS custom properties */
+    --primary-800: #1f5abd;
+    --secondary-800: #8910a8;
+    --tertiary-800: #5435b3;
+    --pop-400: #48c774;
+    --gray-950: #121212;
+    --gray-900: #3d3d3d;
+    --gray-300: #b0b0b0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #232323;
+    color: #ffffff;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+::selection {
+    background: linear-gradient(135deg, var(--primary-800), var(--secondary-800));
+    color: white;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
