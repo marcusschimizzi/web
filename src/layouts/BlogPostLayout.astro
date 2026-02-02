@@ -1,0 +1,56 @@
+---
+import PageLayout from './PageLayout.astro';
+import TagList from '@components/TagList.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    pubDate: Date;
+    tags: string[];
+    readingTime: string;
+    heroImage?: string;
+}
+
+const { title, description, pubDate, tags, readingTime, heroImage } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+});
+const publishedTime = pubDate.toISOString();
+---
+
+<PageLayout
+    title={title}
+    description={description}
+    image={heroImage}
+    type="article"
+    {publishedTime}
+    {tags}
+>
+    <article class="max-w-3xl mx-auto">
+        {heroImage && (
+            <img
+                src={heroImage}
+                alt={title}
+                class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+            />
+        )}
+        <header class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-100">{title}</h1>
+            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
+                <time>{formattedDate}</time>
+                <span class="text-primary-400">{readingTime}</span>
+            </div>
+            <TagList tags={tags} />
+        </header>
+        <div class="prose prose-invert prose-lg max-w-none">
+            <slot />
+        </div>
+        <footer class="mt-12 pt-8 border-t border-gray-800">
+            <h3 class="text-sm font-semibold text-gray-400 mb-3">Tags</h3>
+            <TagList tags={tags} />
+        </footer>
+    </article>
+</PageLayout>

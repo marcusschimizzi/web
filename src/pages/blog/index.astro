@@ -1,0 +1,40 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import BlogPostCard from '@components/BlogPostCard.astro';
+import { getCollection } from 'astro:content';
+import { getReadingTime } from '@/utils/readingTime';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+    .map((post) => ({
+        ...post,
+        readingTime: getReadingTime(post.body || ''),
+    }));
+---
+
+<PageLayout
+    title="Blog | Marcus Schimizzi"
+    description="Thoughts, tutorials, and insights on software development and design."
+>
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-5xl font-bold mb-12 text-gray-100">Blog</h1>
+        {posts.length === 0 ? (
+            <p class="text-gray-400 text-lg">No posts yet. Check back soon!</p>
+        ) : (
+            <div class="space-y-6">
+                {posts.map((post) => (
+                    <BlogPostCard
+                        title={post.data.title}
+                        description={post.data.description}
+                        pubDate={post.data.pubDate}
+                        tags={post.data.tags}
+                        slug={post.id}
+                        readingTime={post.readingTime}
+                    />
+                ))}
+            </div>
+        )}
+    </div>
+</PageLayout>
