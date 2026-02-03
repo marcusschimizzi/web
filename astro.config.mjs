@@ -15,7 +15,7 @@ export default defineConfig({
     ],
     vite: {
         ssr: {
-            external: ['sharp'],
+            external: ['sharp', '@resvg/resvg-js'],
         },
     },
 });
