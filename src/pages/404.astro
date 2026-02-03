@@ -1,0 +1,58 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+---
+
+<PageLayout title="404 | Marcus Schimizzi" description="Page not found.">
+	<div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
+		<h1 class="text-9xl font-bold mb-4 gradient-404">404</h1>
+		<h2 class="text-4xl font-bold mb-4">Page not found</h2>
+		<p class="text-gray-300 text-lg mb-8 max-w-md">
+			The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+		</p>
+		<a
+			href="/"
+			class="inline-block mb-12 px-8 py-3 bg-gradient-to-r from-primary-800 to-secondary-800 text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+		>
+			Go Home
+		</a>
+
+		<div class="border-t border-gray-700 pt-8 w-full">
+			<p class="text-gray-400 text-sm mb-6">Quick links to main sections:</p>
+			<div class="flex flex-wrap gap-4 justify-center">
+				<a href="/projects" class="text-primary-400 hover:text-primary-300 transition-colors">
+					Projects
+				</a>
+				<span class="text-gray-600">•</span>
+				<a href="/blog" class="text-primary-400 hover:text-primary-300 transition-colors">
+					Blog
+				</a>
+				<span class="text-gray-600">•</span>
+				<a href="/about" class="text-primary-400 hover:text-primary-300 transition-colors">
+					About
+				</a>
+				<span class="text-gray-600">•</span>
+				<a href="/experience" class="text-primary-400 hover:text-primary-300 transition-colors">
+					Experience
+				</a>
+			</div>
+		</div>
+	</div>
+</PageLayout>
+
+<style>
+	.gradient-404 {
+		font-size: 8rem;
+		font-weight: 700;
+		margin: 0 0 1rem 0;
+		background: linear-gradient(160deg, #1F5ABD 0%, #8910A8 50%, #5435B3 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	@media (max-width: 768px) {
+		.gradient-404 {
+			font-size: 5rem;
+		}
+	}
+</style>
