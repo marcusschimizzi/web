@@ -29,14 +29,14 @@ I built Mock My Draft as a full-stack web application from scratch. I designed a
 
 - **Historical Draft Archive**: Comprehensive database of historical NFL drafts going back decades, with searchable team, player, and pick data
 
-- **Draft Grade Aggregation**: {/* TODO: Marcus — describe the specific grading sources and how grades are calculated/aggregated */}
+- **Draft Grade Aggregation**: Draft grades are sourced from various publications around the web and normalized into a consistent format for comparison across analysts and years.
 
-- **Interactive Visualizations**: {/* TODO: Marcus — describe the key visualizations (e.g., team performance over time, draft position analysis) */}
+- **Interactive Visualizations**: Interactive charts and graphs built with D3.js let users explore draft trends, compare team performance over time, and analyze draft position patterns with dynamic filtering.
 
-- **Team Comparison Tools**: {/* TODO: Marcus — describe how users can compare multiple teams' draft performance side by side */}
+- **Team Comparison Tools**: Users can compare multiple teams' draft performance side by side, viewing aggregated grades and trends across different time periods to understand long-term franchise strategy.
 
 ## Lessons Learned
 
-Building Mock My Draft reinforced the importance of thoughtful data modeling when working with historical sports data. I learned that {/* TODO: Marcus — describe a specific technical challenge you solved, e.g., handling draft trades, data inconsistencies, performance optimization with large datasets */}.
+Building Mock My Draft reinforced the importance of thoughtful data modeling when working with historical sports data. I learned that the data pipeline is the most critical component — going from unstructured articles to structured data with normalized grades using rules-based scraping was technically complex, and I'm now exploring LLM-based parsers as a more robust replacement.
 
-I also discovered that {/* TODO: Marcus — describe a UX insight, e.g., how users actually want to interact with draft data, what features surprised you by being most popular */}.
+I also discovered that getting clean, normalized data from messy sources is the core challenge — the data pipeline really is the product itself, and investing time in robust data transformation pays dividends throughout the application.
