@@ -1,0 +1,76 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+---
+
+<PageLayout title="Now | Marcus Schimizzi" description="What I'm focused on right now.">
+	<div class="max-w-4xl mx-auto">
+		<p class="text-sm text-gray-400 mb-2">Last updated: February 2026</p>
+
+		<div class="space-y-6">
+			<p class="text-gray-300">
+				This is a "now" page. If you have your own site, <a href="https://nownownow.com/about" class="text-primary-400 hover:text-primary-300 transition-colors">you should make one too</a>.
+			</p>
+
+			<!-- Lately Grid -->
+			<section class="mt-8">
+				<h2 class="text-2xl font-bold mb-6">Lately</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<!-- Reading -->
+					<div class="bg-gray-900/50 border border-gray-800 rounded-lg p-5">
+						<p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Reading</p>
+						<p class="text-gray-300">
+							<em>Jailbird</em> by Kurt Vonnegut
+						</p>
+					</div>
+
+					<!-- Tinkering with -->
+					<div class="bg-gray-900/50 border border-gray-800 rounded-lg p-5">
+						<p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Tinkering with</p>
+						<p class="text-gray-300">
+							Memory systems for agentic AI — how to give agents persistent, useful context across sessions.
+						</p>
+					</div>
+
+					<!-- Watching -->
+					<div class="bg-gray-900/50 border border-gray-800 rounded-lg p-5">
+						<p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Watching</p>
+						<p class="text-gray-300">
+							Excited for Mariners and Pirates baseball season. Also watching my surprisingly good Penguins.
+						</p>
+					</div>
+
+					<!-- Cooking -->
+					<div class="bg-gray-900/50 border border-gray-800 rounded-lg p-5">
+						<p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Cooking</p>
+						<p class="text-gray-300">
+							Working through recipes from <em>The Food Lab</em> by J. Kenji López-Alt.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- What I'm working on -->
+			<section class="mt-12 pt-10 border-t border-gray-800">
+				<h2 class="text-2xl font-bold mb-4">What I'm working on</h2>
+				<div class="space-y-3 text-gray-300 max-w-2xl">
+					<p>
+						At work, I'm focused on building a fully automated LLM pipeline for real estate title searches and exams at Qualia.
+					</p>
+					<p>
+						Side-project wise, I've been all over the map, but the main focus right now is <strong class="text-white">Honeycomber</strong> — a career companion app. I'm also building <strong class="text-white">Strata</strong>, a cousin of Obsidian with PARA structure, richer note types, and AI integration.
+					</p>
+				</div>
+			</section>
+
+			<!-- What I'm into -->
+			<section class="mt-12 pt-10 border-t border-gray-800">
+				<h2 class="text-2xl font-bold mb-4">What I'm into</h2>
+				<div class="space-y-3 text-gray-300 max-w-2xl">
+					<p>
+						I've picked up squash recently, and once it gets warmer I intend to play more beach volleyball and pickleball. While it's winter, I'm mostly building side projects, reading, and planning my wedding.
+					</p>
+				</div>
+			</section>
+		</div>
+	</div>
+</PageLayout>
