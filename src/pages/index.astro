@@ -12,7 +12,7 @@ import SocialLinks from '@components/SocialLinks.astro';
 >
     <Nav />
     <!-- Hero: full-bleed, no container constraint -->
-    <section class="hero-section">
+    <section class="hero-section" transition:animate="fade">
         <div class="hero-content">
             <h1 class="hero-heading">Hi, I'm Marcus.</h1>
             <Epithets />
@@ -22,7 +22,7 @@ import SocialLinks from '@components/SocialLinks.astro';
         </div>
     </section>
 
-    <section class="highlights-section">
+    <section class="highlights-section" transition:animate="fade">
         <div class="highlights-container">
             <a href="/projects" class="highlight-card">
                 <h2 class="highlight-title">Projects</h2>
