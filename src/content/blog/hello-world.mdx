@@ -1,9 +1,44 @@
 ---
-title: "Hello World"
-description: "The first post on the new blog."
-pubDate: 2026-02-02
-tags: ["general"]
-draft: true
+title: "Building my new portfolio with Astro"
+description: "Why I rebuilt my portfolio from Next.js to Astro, and what the experience was like."
+pubDate: 2026-02-03
+tags: ["general", "web-development", "astro"]
+draft: false
 ---
 
-This is the first blog post. More to come!
+Hi there! Welcome to my new blog.
+
+If you're wondering why this site looks different from the old one, I recently rebuilt my portfolio from Next.js 14 to Astro 5 using static site generation. It's been a refreshing change, and I wanted to share a bit about the journey.
+
+## Why Astro?
+
+My Next.js portfolio was working fine, but it felt like overkill for what I needed. I wasn't using React hydration, server components, or any of the advanced features that make Next.js shine. Astro's zero-JS-by-default approach just made more sense for a mostly static personal site.
+
+The build times alone have been a dramatic improvement. What used to take 20+ seconds now finishes in under 5 seconds. Plus, the architecture is simpler—no need to think about where to fetch data or when to hydrate components.
+
+## What I Built
+
+The new portfolio includes all the essentials: an About page, a Projects showcase, and now this Blog. Setting up the blog was straightforward thanks to Astro's built-in content collections and MDX support.
+
+Here's a simple example of how clean Astro components can be:
+
+```astro
+---
+import PageLayout from '@layouts/PageLayout.astro';
+
+const title = "Hello World";
+---
+
+<PageLayout title={title}>
+    <h1>{title}</h1>
+    <p>Welcome to my blog!</p>
+</PageLayout>
+```
+
+I'm using Shiki for syntax highlighting, reading progress for longer posts, and a table of contents for navigation. Everything's statically generated, so the site is incredibly fast.
+
+## What's Next?
+
+I plan to write more posts here about software engineering, projects I'm working on, and things I'm learning. This first post was mostly to get the blog infrastructure working and test things like code syntax highlighting—which you should see rendered above!
+
+Thanks for stopping by. More coming soon.
