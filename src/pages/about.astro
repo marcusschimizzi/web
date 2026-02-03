@@ -5,6 +5,7 @@ import portraitImage from '../assets/images/portrait.jpg';
 ---
 
 <PageLayout title="About | Marcus Schimizzi" description="Hi there! My name is Marcus. I'm a software engineer at Qualia working to make real estate transactions easier and more efficient.">
+    <!-- Intro: portrait + bio -->
     <div class="flex flex-col lg:flex-row gap-8 items-start">
         <Image
             src={portraitImage}
@@ -24,4 +25,71 @@ import portraitImage from '../assets/images/portrait.jpg';
             </a>
         </div>
     </div>
+
+    <!-- What I do -->
+    <section class="mt-16 pt-10 border-t border-gray-800">
+        <h2 class="text-2xl font-bold mb-4">What I do</h2>
+        <div class="space-y-3 text-gray-300 max-w-2xl">
+            <p>
+                I'm on the Connect team at <strong class="text-white">Qualia</strong>, making it easier for agents, buyers, and sellers to communicate during the home buying process. Most of my work is full-stack — React and TypeScript on the front end, with a mix of backend services behind it.
+            </p>
+            <p>
+                Before Qualia, I spent nearly five years at <strong class="text-white">Qualtrics</strong> on the Data Visualization team, building features for the XM Platform with React, TypeScript, D3, and Golang. I also interned at <strong class="text-white">Ford</strong> building a gamified training app, and I've been freelancing on the side since college — mostly small business sites and side projects for fun.
+            </p>
+        </div>
+    </section>
+
+    <!-- How I work -->
+    <section class="mt-12 pt-10 border-t border-gray-800">
+        <h2 class="text-2xl font-bold mb-4">How I work</h2>
+        <div class="space-y-3 text-gray-300 max-w-2xl">
+            <p>
+                I care about fast page loads, clean interfaces, and code that's easy to come back to six months later. I'd rather ship something simple that works well than something clever that's hard to maintain.
+            </p>
+            <p>
+                Above all, I try to approach things with curiosity first. I find it's important not to assume I know everything about a particular project, codebase, or solution. With LLMs changing how we build software, I've leaned into rapid experimentation — what used to be "let's decide the right path up front" is now "I've tried three different approaches today and here's why this one wins." I think that shift is a sea change in software engineering, and I've tried to embrace it wholeheartedly.
+            </p>
+        </div>
+    </section>
+
+    <!-- Personal -->
+    <section class="mt-12 pt-10 border-t border-gray-800">
+        <h2 class="text-2xl font-bold mb-4">Outside of work</h2>
+        <div class="space-y-3 text-gray-300 max-w-2xl">
+            <p>
+                I'm a <strong class="text-white">Notre Dame</strong> alum (BSE in Computer Science, class of 2019) living in <strong class="text-white">Chicago</strong>. During college I spent a semester studying abroad in London, which remains one of my favorite cities.
+            </p>
+            <p>
+                My heritage on my father's side is Italian, and that's my first love of cuisine — it's what I cook most often and what I'd seek out first when dining out. I've been lucky enough to spend time in Greece sailing the Mediterranean on a catamaran and a month living in Siracusa, Sicily, where the pizza and pasta were everything you'd hope for.
+            </p>
+            <p>
+                I read a mix of fiction and nonfiction — a few favorites are <em>Slaughterhouse-Five</em>, <em>Klara and the Sun</em>, and <em>Moonwalking with Einstein</em>. And I worry far too much about my beloved Pittsburgh teams — the <strong class="text-white">Steelers</strong>, <strong class="text-white">Penguins</strong>, and <strong class="text-white">Pirates</strong>. I also picked up an allegiance to the <strong class="text-white">Mariners</strong> during my five years in Seattle, and of course the <strong class="text-white">Notre Dame Fighting Irish</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Now & Uses bridge -->
+    <section class="mt-12 pt-10 border-t border-gray-800">
+        <p class="text-gray-300">
+            Check out more about what I'm up to <a href="/now" class="text-primary-400 hover:text-primary-300 transition-colors">now</a> and the different things I like to <a href="/uses" class="text-primary-400 hover:text-primary-300 transition-colors">use</a>.
+        </p>
+    </section>
+
+    <!-- Cross-links -->
+    <section class="mt-12 pt-10 border-t border-gray-800">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/projects" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
+                <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">See what I've built</p>
+                <p class="text-sm text-gray-400 mt-1">Projects &rarr;</p>
+            </a>
+            <a href="/blog" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
+                <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">Read my thoughts</p>
+                <p class="text-sm text-gray-400 mt-1">Blog &rarr;</p>
+            </a>
+            <a href="/experience" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
+                <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">Where I've worked</p>
+                <p class="text-sm text-gray-400 mt-1">Experience &rarr;</p>
+            </a>
+        </div>
+    </section>
 </PageLayout>
