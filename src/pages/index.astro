@@ -1,9 +1,27 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
 import Epithets from '@components/Epithets.astro';
 import SocialLinks from '@components/SocialLinks.astro';
+import { getReadingTime } from '../utils/readingTime';
+
+const featuredProjects = (await getCollection('projects'))
+    .filter((p) => p.data.featured)
+    .sort((a, b) => a.data.order - b.data.order)
+    .slice(0, 2);
+
+const latestPost = (await getCollection('blog'))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
+const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+});
 ---
 
 <BaseLayout
@@ -22,22 +40,71 @@ import SocialLinks from '@components/SocialLinks.astro';
         </div>
     </section>
 
-    <section class="highlights-section" transition:animate="fade">
-        <div class="highlights-container">
-            <a href="/projects" class="highlight-card">
-                <h2 class="highlight-title">Projects</h2>
-                <p class="highlight-text">See what I've built</p>
-            </a>
-            <a href="/blog" class="highlight-card">
-                <h2 class="highlight-title">Blog</h2>
-                <p class="highlight-text">Read my thoughts</p>
-            </a>
-            <a href="/experience" class="highlight-card">
-                <h2 class="highlight-title">Experience</h2>
-                <p class="highlight-text">View my journey</p>
-            </a>
-        </div>
-    </section>
+    <div class="below-hero" transition:animate="fade">
+        <!-- Positioning statement -->
+        <section class="intro-section">
+            <p class="intro-text">
+                I build web applications that make complex things feel simple.
+                Currently a software engineer at <strong>Qualia</strong>, where I work on making real estate transactions easier and more efficient.
+            </p>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="featured-section">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <a href="/projects" class="section-link">View all &rarr;</a>
+            </div>
+            <div class="featured-grid">
+                {featuredProjects.map((project) => (
+                    <a href={`/projects/${project.id}`} class="featured-card group">
+                        <div class="featured-thumb">
+                            <Image
+                                src={project.data.thumbnail}
+                                alt={project.data.title}
+                                width={640}
+                                height={360}
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                        <div class="featured-info">
+                            <h3 class="featured-name">{project.data.title}</h3>
+                            <p class="featured-desc">{project.data.description}</p>
+                            <div class="featured-tech">
+                                {project.data.technologies.slice(0, 3).map((tech) => (
+                                    <span class="tech-pill">{tech}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+        <!-- Latest from the blog -->
+        {latestPost && (
+            <section class="latest-post-section">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Post</h2>
+                    <a href="/blog" class="section-link">All posts &rarr;</a>
+                </div>
+                <a href={`/blog/${latestPost.id}`} class="latest-post-card group">
+                    <div class="latest-post-meta">
+                        <time>{latestPostDate}</time>
+                        <span class="text-gray-600">&middot;</span>
+                        <span class="text-primary-400">{getReadingTime(latestPost.body ?? '')}</span>
+                    </div>
+                    <h3 class="latest-post-title">{latestPost.data.title}</h3>
+                    <p class="latest-post-desc">{latestPost.data.description}</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        {latestPost.data.tags.map((tag) => (
+                            <span class="bg-gray-800 text-primary-400 px-3 py-1 rounded-full text-sm">{tag}</span>
+                        ))}
+                    </div>
+                </a>
+            </section>
+        )}
+    </div>
     <Footer />
 </BaseLayout>
 
@@ -113,53 +180,178 @@ import SocialLinks from '@components/SocialLinks.astro';
         justify-content: center;
     }
 
-    .highlights-section {
-        padding: 4rem 2rem;
-    }
-
-    .highlights-container {
+    /* Below hero content */
+    .below-hero {
         max-width: 1000px;
         margin: 0 auto;
+        padding: 0 2rem 4rem;
+    }
+
+    /* Positioning statement */
+    .intro-section {
+        padding: 3rem 0 2.5rem;
+        border-bottom: 1px solid rgb(31 41 55);
+    }
+
+    .intro-text {
+        font-size: 1.25rem;
+        line-height: 1.75;
+        color: rgb(209 213 219);
+        max-width: 640px;
+    }
+
+    .intro-text strong {
+        color: white;
+        font-weight: 600;
+    }
+
+    /* Shared section styles */
+    .section-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+    }
+
+    .section-link {
+        font-size: 0.875rem;
+        color: rgb(96 165 250);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .section-link:hover {
+        color: rgb(147 197 253);
+    }
+
+    /* Featured projects */
+    .featured-section {
+        padding: 2.5rem 0;
+        border-bottom: 1px solid rgb(31 41 55);
+    }
+
+    .featured-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
     @media (min-width: 768px) {
-        .highlights-container {
-            grid-template-columns: repeat(3, 1fr);
+        .featured-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 
-    .highlight-card {
+    .featured-card {
         background: rgb(17 24 39 / 0.5);
         border: 1px solid rgb(31 41 55);
-        border-radius: 1rem;
-        padding: 2rem;
+        border-radius: 0.75rem;
+        overflow: hidden;
         text-decoration: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         display: block;
+        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
-    .highlight-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-        border-color: rgb(31 90 189);
+    .featured-card:hover {
+        border-color: rgb(31 90 189 / 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.3);
     }
 
-    .highlight-title {
-        font-size: 1.5rem;
+    .featured-thumb {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+    }
+
+    .featured-info {
+        padding: 1.25rem;
+    }
+
+    .featured-name {
+        font-size: 1.125rem;
         font-weight: 700;
-        margin: 0 0 0.5rem 0;
-        background: linear-gradient(160deg, #1F5ABD 0%, #8910A8 50%, #5435B3 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: white;
+        margin: 0 0 0.5rem;
+        transition: color 0.2s;
     }
 
-    .highlight-text {
-        font-size: 1rem;
+    .group:hover .featured-name {
+        color: rgb(96 165 250);
+    }
+
+    .featured-desc {
+        font-size: 0.875rem;
+        color: rgb(156 163 175);
+        margin: 0 0 0.75rem;
+        line-height: 1.5;
+    }
+
+    .featured-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tech-pill {
+        font-size: 0.75rem;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        background: rgb(31 41 55);
+        color: rgb(156 163 175);
+    }
+
+    /* Latest blog post */
+    .latest-post-section {
+        padding: 2.5rem 0;
+    }
+
+    .latest-post-card {
+        display: block;
+        background: rgb(17 24 39 / 0.5);
+        border: 1px solid rgb(31 41 55);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        text-decoration: none;
+        transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .latest-post-card:hover {
+        border-color: rgb(31 90 189 / 0.5);
+        transform: translateY(-2px);
+    }
+
+    .latest-post-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: rgb(156 163 175);
+        margin-bottom: 0.5rem;
+    }
+
+    .latest-post-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: white;
+        margin: 0 0 0.5rem;
+        transition: color 0.2s;
+    }
+
+    .group:hover .latest-post-title {
+        color: rgb(96 165 250);
+    }
+
+    .latest-post-desc {
+        font-size: 0.9rem;
         color: rgb(156 163 175);
         margin: 0;
+        line-height: 1.5;
     }
 </style>
