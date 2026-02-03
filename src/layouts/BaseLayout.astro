@@ -8,12 +8,14 @@ interface Props {
     description: string;
     image?: string;
     url?: string;
-    type?: 'website' | 'article';
+    type?: 'website' | 'article' | 'project';
     publishedTime?: string;
     tags?: string[];
+    technologies?: string[];
+    projectUrl?: string;
 }
 
-const { title, description, image, url, type, publishedTime, tags } = Astro.props;
+const { title, description, image, url, type, publishedTime, tags, technologies, projectUrl } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -30,6 +32,8 @@ const { title, description, image, url, type, publishedTime, tags } = Astro.prop
             {type}
             {publishedTime}
             {tags}
+            {technologies}
+            {projectUrl}
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

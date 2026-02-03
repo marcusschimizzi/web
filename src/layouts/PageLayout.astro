@@ -8,12 +8,14 @@ interface Props {
     description: string;
     image?: string;
     url?: string;
-    type?: 'website' | 'article';
+    type?: 'website' | 'article' | 'project';
     publishedTime?: string;
     tags?: string[];
+    technologies?: string[];
+    projectUrl?: string;
 }
 
-const { title, description, image, url, type, publishedTime, tags } = Astro.props;
+const { title, description, image, url, type, publishedTime, tags, technologies, projectUrl } = Astro.props;
 ---
 
 <BaseLayout
@@ -24,6 +26,8 @@ const { title, description, image, url, type, publishedTime, tags } = Astro.prop
     {type}
     {publishedTime}
     {tags}
+    {technologies}
+    {projectUrl}
 >
     <Nav />
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">

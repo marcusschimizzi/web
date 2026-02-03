@@ -4,12 +4,14 @@ interface Props {
     description: string;
     image?: string;
     url?: string;
-    type?: 'website' | 'article';
+    type?: 'website' | 'article' | 'project';
     publishedTime?: string;
     tags?: string[];
+    technologies?: string[];
+    projectUrl?: string;
 }
 
-const { title, description, image, url, type = 'website', publishedTime, tags } = Astro.props;
+const { title, description, image, url, type = 'website', publishedTime, tags, technologies, projectUrl } = Astro.props;
 
 const siteURL = Astro.site ? new URL(Astro.site).origin : 'https://schimizzi.io';
 const canonicalURL = url ? `${siteURL}${url}` : `${siteURL}${Astro.url.pathname}`;
@@ -17,30 +19,67 @@ const pathname = Astro.url.pathname;
 const ogSlug = pathname === '/' ? 'index' : pathname.replace(/^\/|\/$/g, '');
 const ogImage = image || `/og/${ogSlug}.png`;
 
-const jsonLd = type === 'website' ? {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Marcus Schimizzi",
-    "url": "https://schimizzi.io",
-    "sameAs": [
-        "https://github.com/marcusschimizzi",
-        "https://linkedin.com/in/marcusschimizzi"
-    ],
-    "jobTitle": "Software Engineer"
-} : {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": title,
-    "description": description,
-    "image": `${siteURL}${ogImage}`,
-    "url": canonicalURL,
-    "datePublished": publishedTime || '',
-    "author": {
+// Schema map for flexible JSON-LD generation
+const schemaMap = {
+    website: {
+        "@context": "https://schema.org",
         "@type": "Person",
         "name": "Marcus Schimizzi",
-        "url": "https://schimizzi.io"
+        "url": "https://schimizzi.io",
+        "sameAs": [
+            "https://github.com/marcusschimizzi",
+            "https://linkedin.com/in/marcusschimizzi"
+        ],
+        "jobTitle": "Software Engineer"
+    },
+    article: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": description,
+        "image": `${siteURL}${ogImage}`,
+        "url": canonicalURL,
+        "datePublished": publishedTime || '',
+        "author": {
+            "@type": "Person",
+            "name": "Marcus Schimizzi",
+            "url": "https://schimizzi.io"
+        }
+    },
+    project: {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": title,
+        "description": description,
+        "programmingLanguage": technologies || [],
+        "url": projectUrl || canonicalURL,
+        "author": {
+            "@type": "Person",
+            "name": "Marcus Schimizzi"
+        }
     }
 };
+
+// For homepage, render both Person and WebSite schemas
+const getJsonLd = () => {
+    if (type === 'website') {
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                schemaMap.website,
+                {
+                    "@type": "WebSite",
+                    "name": "Marcus Schimizzi",
+                    "url": "https://schimizzi.io",
+                    "description": "Portfolio of Marcus Schimizzi — software engineer, lifelong learner, and tinkerer."
+                }
+            ]
+        };
+    }
+    return schemaMap[type as keyof typeof schemaMap] || schemaMap.website;
+};
+
+const jsonLd = getJsonLd();
 ---
 
 <title>{title}</title>

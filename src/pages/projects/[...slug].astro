@@ -25,7 +25,13 @@ const {
 } = project.data;
 ---
 
-<PageLayout title={`${title} | Marcus Schimizzi`} description={description}>
+<PageLayout 
+    title={`${title} | Marcus Schimizzi`} 
+    description={description}
+    type="project"
+    technologies={technologies}
+    projectUrl={link}
+>
     <!-- Back link -->
     <a href="/projects" class="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-8">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
