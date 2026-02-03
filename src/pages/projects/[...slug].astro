@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import { getCollection, render } from 'astro:content';
 import PageLayout from '@layouts/PageLayout.astro';
 
@@ -41,23 +40,15 @@ const {
     </a>
 
     <!-- Hero thumbnail -->
-     {thumbnail && (
-         typeof thumbnail === 'string' ? (
-             <img
-                 src={thumbnail}
-                 alt={title}
-                 class="w-full rounded-xl mb-8 border border-gray-800"
-             />
-         ) : (
-             <Image
-                 src={thumbnail}
-                 alt={title}
-                 width={1200}
-                 height={675}
-                 class="w-full rounded-xl mb-8 border border-gray-800"
-             />
-         )
-     )}
+    {thumbnail && (
+        <Image
+            src={thumbnail}
+            alt={title}
+            width={1200}
+            height={675}
+            class="w-full rounded-xl mb-8 border border-gray-800"
+        />
+    )}
 
     <!-- Title and description -->
     <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>

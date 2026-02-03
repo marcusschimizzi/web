@@ -5,7 +5,7 @@ import type { ImageMetadata } from 'astro';
 interface Props {
     title: string;
     description: string;
-    thumbnail: string | ImageMetadata;
+    thumbnail: ImageMetadata;
     slug: string;
     featured?: boolean;
 }
@@ -27,29 +27,21 @@ const { title, description, thumbnail, slug, featured = false } = Astro.props;
 
         <!-- Thumbnail -->
          <div class="aspect-video overflow-hidden">
-             {typeof thumbnail === 'string' ? (
-                 <img
-                     src={thumbnail}
-                     alt={title}
-                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                 />
-             ) : (
-                 <Image
-                     src={thumbnail}
-                     alt={title}
-                     width={1280}
-                     height={720}
-                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                 />
-             )}
+             <Image
+                 src={thumbnail}
+                 alt={title}
+                 width={1280}
+                 height={720}
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+             />
          </div>
 
         <!-- Content -->
         <div class="p-5">
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+            <h2 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
                 {title}
-            </h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
+            </h2>
+            <p class="text-gray-300 text-sm leading-relaxed">
                 {description}
             </p>
         </div>
