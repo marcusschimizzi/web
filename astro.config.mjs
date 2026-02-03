@@ -13,4 +13,9 @@ export default defineConfig({
         sitemap(),
         mdx(),
     ],
+    vite: {
+        ssr: {
+            external: ['sharp'],
+        },
+    },
 });

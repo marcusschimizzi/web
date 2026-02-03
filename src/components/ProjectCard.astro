@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
     title: string;
     description: string;
-    thumbnail: string;
+    thumbnail: string | ImageMetadata;
     slug: string;
     featured?: boolean;
 }
@@ -23,13 +26,23 @@ const { title, description, thumbnail, slug, featured = false } = Astro.props;
         )}
 
         <!-- Thumbnail -->
-        <div class="aspect-video overflow-hidden">
-            <img
-                src={thumbnail}
-                alt={title}
-                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-        </div>
+         <div class="aspect-video overflow-hidden">
+             {typeof thumbnail === 'string' ? (
+                 <img
+                     src={thumbnail}
+                     alt={title}
+                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                 />
+             ) : (
+                 <Image
+                     src={thumbnail}
+                     alt={title}
+                     width={1280}
+                     height={720}
+                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                 />
+             )}
+         </div>
 
         <!-- Content -->
         <div class="p-5">

@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import PageLayout from '@layouts/PageLayout.astro';
+import portraitImage from '../assets/images/portrait.jpg';
 ---
 
 <PageLayout title="About | Marcus Schimizzi" description="Hi there! My name is Marcus. I'm a software engineer at Qualia working to make real estate transactions easier and more efficient.">
     <div class="flex flex-col lg:flex-row gap-8 items-start">
-        <img
-            src="/images/portrait.jpg"
+        <Image
+            src={portraitImage}
             alt="Marcus Schimizzi"
             class="w-64 lg:w-96 aspect-square object-cover border-4 border-primary-500 rounded-md"
         />

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import PageLayout from './PageLayout.astro';
 import TagList from '@components/TagList.astro';
 
@@ -8,7 +10,7 @@ interface Props {
     pubDate: Date;
     tags: string[];
     readingTime: string;
-    heroImage?: string;
+    heroImage?: string | ImageMetadata;
 }
 
 const { title, description, pubDate, tags, readingTime, heroImage } = Astro.props;
@@ -22,21 +24,31 @@ const publishedTime = pubDate.toISOString();
 ---
 
 <PageLayout
-    title={title}
-    description={description}
-    image={heroImage}
-    type="article"
-    {publishedTime}
-    {tags}
->
+     title={title}
+     description={description}
+     image={typeof heroImage === 'string' ? heroImage : undefined}
+     type="article"
+     {publishedTime}
+     {tags}
+ >
     <article class="max-w-3xl mx-auto">
-        {heroImage && (
-            <img
-                src={heroImage}
-                alt={title}
-                class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-            />
-        )}
+         {heroImage && (
+             typeof heroImage === 'string' ? (
+                 <img
+                     src={heroImage}
+                     alt={title}
+                     class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+                 />
+             ) : (
+                 <Image
+                     src={heroImage}
+                     alt={title}
+                     width={800}
+                     height={400}
+                     class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+                 />
+             )
+         )}
         <header class="mb-8">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-100">{title}</h1>
             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
