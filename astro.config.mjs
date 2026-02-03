@@ -18,4 +18,10 @@ export default defineConfig({
             external: ['sharp', '@resvg/resvg-js'],
         },
     },
+    markdown: {
+        shikiConfig: {
+            theme: 'github-dark-dimmed',
+            wrap: true,
+        },
+    },
 });
