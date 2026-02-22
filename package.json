@@ -1,8 +1,7 @@
 {
   "name": "marcus",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Personal website for Marcus Schimizzi",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "astro dev",
@@ -10,7 +9,7 @@
     "preview": "astro preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marcus Schimizzi",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

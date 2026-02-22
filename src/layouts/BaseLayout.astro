@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import SEOHead from '@/components/SEOHead.astro';
 import { ClientRouter } from 'astro:transitions';
+import { features } from '@/config';
 
 interface Props {
     title: string;
@@ -41,7 +42,8 @@ const { title, description, image, url, type, publishedTime, tags, technologies,
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-         <link rel="alternate" type="application/rss+xml" title="Marcus Schimizzi's Blog" href="/rss.xml" />
+         <link rel="preconnect" href="https://cdn.usefathom.com" />
+         {features.blog && <link rel="alternate" type="application/rss+xml" title="Marcus Schimizzi's Blog" href="/rss.xml" />}
          <link rel="sitemap" href="/sitemap-index.xml" />
          <ClientRouter />
          <script src="https://cdn.usefathom.com/script.js" data-site="FOJEAWOJ" data-spa="auto" defer></script>

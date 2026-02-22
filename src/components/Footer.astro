@@ -1,4 +1,6 @@
 ---
+import { features } from '@/config';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -29,8 +31,13 @@ const currentYear = new Date().getFullYear();
             <li>
               <a href="/experience" class="text-gray-300 hover:text-primary-400 transition-colors">Experience</a>
             </li>
+            {features.blog && (
             <li>
               <a href="/blog" class="text-gray-300 hover:text-primary-400 transition-colors">Blog</a>
+            </li>
+            )}
+            <li>
+              <a href="/contact" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a>
             </li>
           </ul>
         </div>
