@@ -3,6 +3,11 @@ import PageLayout from '@layouts/PageLayout.astro';
 import BlogPostCard from '@components/BlogPostCard.astro';
 import { getCollection } from 'astro:content';
 import { getReadingTime } from '@/utils/readingTime';
+import { features } from '@/config';
+
+if (!features.blog) {
+    return Astro.redirect('/');
+}
 
 const allPosts = await getCollection('blog');
 const posts = allPosts

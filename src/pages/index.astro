@@ -7,15 +7,18 @@ import Footer from '@components/Footer.astro';
 import Epithets from '@components/Epithets.astro';
 import SocialLinks from '@components/SocialLinks.astro';
 import { getReadingTime } from '../utils/readingTime';
+import { features } from '@/config';
 
 const featuredProjects = (await getCollection('projects'))
     .filter((p) => p.data.featured)
     .sort((a, b) => a.data.order - b.data.order)
     .slice(0, 2);
 
-const latestPost = (await getCollection('blog'))
-    .filter((p) => !p.data.draft)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+const latestPost = features.blog
+    ? (await getCollection('blog'))
+        .filter((p) => !p.data.draft)
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0]
+    : undefined;
 
 const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
     year: 'numeric',

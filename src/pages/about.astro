@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import PageLayout from '@layouts/PageLayout.astro';
 import portraitImage from '../assets/images/portrait.jpg';
+import { features } from '@/config';
 ---
 
 <PageLayout title="About | Marcus Schimizzi" description="Hi there! My name is Marcus. I'm a software engineer at Qualia working to make real estate transactions easier and more efficient.">
@@ -82,10 +83,12 @@ import portraitImage from '../assets/images/portrait.jpg';
                 <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">See what I've built</p>
                 <p class="text-sm text-gray-400 mt-1">Projects &rarr;</p>
             </a>
+            {features.blog && (
             <a href="/blog" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
                 <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">Read my thoughts</p>
                 <p class="text-sm text-gray-400 mt-1">Blog &rarr;</p>
             </a>
+            )}
             <a href="/experience" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
                 <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">Where I've worked</p>
                 <p class="text-sm text-gray-400 mt-1">Experience &rarr;</p>

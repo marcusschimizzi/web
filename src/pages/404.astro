@@ -1,5 +1,6 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
+import { features } from '@/config';
 ---
 
 <PageLayout title="404 | Marcus Schimizzi" description="Page not found.">
@@ -22,10 +23,14 @@ import PageLayout from '@layouts/PageLayout.astro';
 				<a href="/projects" class="text-primary-400 hover:text-primary-300 transition-colors">
 					Projects
 				</a>
+				{features.blog && (
+				<>
 				<span class="text-gray-600">•</span>
 				<a href="/blog" class="text-primary-400 hover:text-primary-300 transition-colors">
 					Blog
 				</a>
+				</>
+				)}
 				<span class="text-gray-600">•</span>
 				<a href="/about" class="text-primary-400 hover:text-primary-300 transition-colors">
 					About
