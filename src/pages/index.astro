@@ -51,8 +51,7 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
             </p>
             <br />
             <p class="intro-text">
-                Currently a software engineer at <strong>Qualia</strong>, where I work on making real estate transactions easier and more efficient.
-                Right now, that means automating the real estate title search and exam, and ambitious project that involves web scraping, multi-agent orchestration, and prompt engineering. It also requires a lot of care to turn something that is inherently brittle and complex into a robust and reliable workflow.
+                Currently a software engineer at <strong>Qualia</strong>, automating real estate title searches and exams using web scraping, multi-agent orchestration, and prompt engineering — turning something inherently brittle into something reliable.
             </p>
         </section>
 
@@ -262,7 +261,9 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         border-radius: 0.75rem;
         overflow: hidden;
         text-decoration: none;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
         transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
@@ -279,6 +280,9 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
 
     .featured-info {
         padding: 1.25rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .featured-name {
@@ -295,9 +299,10 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
 
     .featured-desc {
         font-size: 0.875rem;
-        color: rgb(156 163 175);
+        color: rgb(209 213 219);
         margin: 0 0 0.75rem;
         line-height: 1.5;
+        flex: 1;
     }
 
     .featured-tech {
@@ -339,7 +344,7 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         align-items: center;
         gap: 0.5rem;
         font-size: 0.875rem;
-        color: rgb(156 163 175);
+        color: rgb(209 213 219);
         margin-bottom: 0.5rem;
     }
 
@@ -357,7 +362,7 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
 
     .latest-post-desc {
         font-size: 0.9rem;
-        color: rgb(156 163 175);
+        color: rgb(209 213 219);
         margin: 0;
         line-height: 1.5;
     }

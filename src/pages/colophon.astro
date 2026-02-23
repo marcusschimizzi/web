@@ -1,0 +1,95 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+---
+
+<PageLayout title="Colophon | Marcus Schimizzi" description="How this site was built — the stack, tools, and decisions behind schimizzi.io.">
+	<div class="max-w-2xl mb-12">
+		<h1 class="text-4xl font-bold mb-4">Colophon</h1>
+		<p class="text-gray-300 text-lg">
+			How this site is built, and the tools and decisions behind it.
+		</p>
+	</div>
+
+	<!-- Stack -->
+	<section class="mt-12 pt-10 border-t border-gray-800">
+		<h2 class="text-2xl font-bold mb-6">Stack</h2>
+		<div class="space-y-4 max-w-2xl">
+			<div>
+				<strong class="text-white">Astro 5</strong>
+				<span class="text-gray-300"> — Static site generator. Fast builds, zero client JS by default, and first-class support for MDX content collections. The right tool for a content-driven portfolio.</span>
+			</div>
+			<div>
+				<strong class="text-white">Tailwind CSS</strong>
+				<span class="text-gray-300"> — Utility-first styling with the Typography plugin for prose content. Custom color palette built around a blue–purple–green triad.</span>
+			</div>
+			<div>
+				<strong class="text-white">MDX</strong>
+				<span class="text-gray-300"> — Markdown with components. Project pages and blog posts live as content collections with typed frontmatter schemas.</span>
+			</div>
+			<div>
+				<strong class="text-white">TypeScript</strong>
+				<span class="text-gray-300"> — End to end. Config, utilities, content schemas — everything is typed.</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Hosting & Deployment -->
+	<section class="mt-12 pt-10 border-t border-gray-800">
+		<h2 class="text-2xl font-bold mb-6">Hosting & Deployment</h2>
+		<div class="space-y-4 max-w-2xl">
+			<div>
+				<strong class="text-white">Netlify</strong>
+				<span class="text-gray-300"> — Automatic deploys from Git, form handling for the contact page, and edge-optimized CDN. Push to main and it's live.</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Design -->
+	<section class="mt-12 pt-10 border-t border-gray-800">
+		<h2 class="text-2xl font-bold mb-6">Design</h2>
+		<div class="space-y-4 max-w-2xl">
+			<div>
+				<strong class="text-white">Custom design</strong>
+				<span class="text-gray-300"> — No template. Dark theme with a gradient hero (animated blue–purple–green), hand-tuned spacing, and a color system built from primary, secondary, tertiary, and pop scales.</span>
+			</div>
+			<div>
+				<strong class="text-white">Typography</strong>
+				<span class="text-gray-300"> — Helvetica/Arial stack for body text. Clean and readable without a custom font download.</span>
+			</div>
+			<div>
+				<strong class="text-white">Syntax highlighting</strong>
+				<span class="text-gray-300"> — Shiki with the <code class="text-primary-400">github-dark-dimmed</code> theme. Matches the site's dark palette.</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="mt-12 pt-10 border-t border-gray-800">
+		<h2 class="text-2xl font-bold mb-6">Built with</h2>
+		<div class="space-y-4 max-w-2xl">
+			<div>
+				<strong class="text-white">Cursor + Neovim</strong>
+				<span class="text-gray-300"> — Primary editors. Cursor for AI-assisted workflows, Neovim for speed.</span>
+			</div>
+			<div>
+				<strong class="text-white">Git CLI</strong>
+				<span class="text-gray-300"> — Version control the old-fashioned way.</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Conventions -->
+	<section class="mt-12 pt-10 border-t border-gray-800">
+		<h2 class="text-2xl font-bold mb-6">Conventions</h2>
+		<div class="space-y-3 text-gray-300 max-w-2xl">
+			<p>
+				This site follows a few community conventions I appreciate:
+			</p>
+			<ul class="list-disc list-inside space-y-2 text-gray-300">
+				<li><a href="https://nownownow.com/about" class="text-primary-400 hover:text-primary-300 transition-colors">/now page</a> — what I'm focused on right now</li>
+				<li><a href="https://uses.tech" class="text-primary-400 hover:text-primary-300 transition-colors">/uses page</a> — the tools and hardware in my daily setup</li>
+				<li>This page — a <a href="https://www.colophon.id/" class="text-primary-400 hover:text-primary-300 transition-colors">colophon</a>, documenting how the site itself was built</li>
+			</ul>
+		</div>
+	</section>
+</PageLayout>
