@@ -1,149 +1,133 @@
 ---
 ---
 
-<div class="epithets-container">
-    <div class="epithets-row epithets-row-1">
-        <div class="epithets-wrapper">
-            <span class="epithet">Software developer,</span>
-            <span class="epithet">Lifelong learner,</span>
-            <span class="epithet">Data visualization buff,</span>
-            <span class="epithet">Tinkerer,</span>
-        </div>
-    </div>
-    <div class="epithets-row epithets-row-2">
-        <div class="epithets-wrapper">
-            <span class="epithet">travel enthusiast,</span>
-            <span class="epithet">amateur chef,</span>
-            <span class="epithet">big sports guy,</span>
-        </div>
-    </div>
-    <div class="epithets-row epithets-row-3">
-        <div class="epithets-wrapper">
-            <span class="epithet">and current Chicagoan.</span>
-            <span class="epithet">and Notre Dame alum.</span>
-            <span class="epithet">and consumer of too much coffee.</span>
-            <span class="epithet">and multitime pub trivia champion.</span>
-        </div>
-    </div>
+<div class="epithets" aria-hidden="true">
+    <span class="ep-prefix">a.k.a.</span>
+    <span class="ep-row ep-row-1">
+        <span class="ep-track">
+            <span class="ep-item">Software developer,</span>
+            <span class="ep-item">Lifelong learner,</span>
+            <span class="ep-item">Data viz buff,</span>
+            <span class="ep-item">Tinkerer,</span>
+        </span>
+    </span>
+    <span class="ep-row ep-row-2">
+        <span class="ep-track">
+            <span class="ep-item">travel enthusiast,</span>
+            <span class="ep-item">amateur chef,</span>
+            <span class="ep-item">big sports guy,</span>
+        </span>
+    </span>
+    <span class="ep-row ep-row-3">
+        <span class="ep-track">
+            <span class="ep-item">and current Chicagoan.</span>
+            <span class="ep-item">and Notre Dame alum.</span>
+            <span class="ep-item">and over-caffeinated.</span>
+            <span class="ep-item">and pub trivia champion.</span>
+        </span>
+    </span>
 </div>
 
 <style>
-    :root {
-        --epithet-height: 3rem;
-    }
-
-    @media (min-width: 768px) {
-        :root {
-            --epithet-height: 4.5rem;
-        }
-    }
-
-    .epithets-container {
+    .epithets {
+        --ep-h: 1.6rem;
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin: 1.5rem 0;
+        flex-wrap: wrap;
+        align-items: baseline;
+        column-gap: 0.55ch;
+        row-gap: 0;
+        margin-top: 1.5rem;
+        font-family: var(--font-sans);
+        font-size: clamp(1rem, 1.35vw, 1.15rem);
+        font-weight: 400;
+        letter-spacing: -0.005em;
+        line-height: var(--ep-h);
+        color: var(--ink);
+        opacity: 0;
+        animation: fadeIn 1s ease-out 0.9s forwards;
     }
 
-    .epithets-row {
+    .ep-prefix {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-right: 0.6rem;
+        align-self: center;
+        white-space: nowrap;
+    }
+    .ep-prefix::before {
+        content: '';
+        display: inline-block;
+        width: 22px;
+        height: 1px;
+        background: var(--rule-strong);
+        vertical-align: middle;
+        margin-right: 0.8rem;
+        transform: translateY(-1px);
+    }
+
+    .ep-row {
+        display: inline-block;
         overflow: hidden;
-        height: var(--epithet-height);
+        height: var(--ep-h);
+        vertical-align: bottom;
     }
-
-    .epithets-wrapper {
+    .ep-track {
         display: flex;
         flex-direction: column;
     }
-
-    .epithet {
+    .ep-item {
         display: block;
-        line-height: var(--epithet-height);
+        height: var(--ep-h);
+        line-height: var(--ep-h);
         flex-shrink: 0;
-        font-size: 1.5rem;
-        font-weight: 700;
-        background: linear-gradient(160deg, #3a9cf7 0%, #c084fc 50%, #818cf8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        white-space: nowrap;
     }
 
-    @media (min-width: 768px) {
-        .epithet {
-            font-size: 1.875rem;
-        }
+    /* Middle row = the personality gold beat */
+    .ep-row-2 .ep-item {
+        font-family: var(--font-serif);
+        font-style: italic;
+        color: var(--gold);
+        font-size: 1.15em;
+        letter-spacing: 0;
+        position: relative;
+        top: 0.06em;
     }
 
-    @media (min-width: 1024px) {
-        .epithet {
-            font-size: 2.25rem;
-        }
+    .ep-row-1 .ep-track {
+        animation: rotate4 16s cubic-bezier(.45,.05,.55,.95) infinite;
+    }
+    .ep-row-2 .ep-track {
+        animation: rotate3 12s cubic-bezier(.45,.05,.55,.95) infinite;
+        animation-delay: 4s;
+    }
+    .ep-row-3 .ep-track {
+        animation: rotate4 16s cubic-bezier(.45,.05,.55,.95) infinite;
+        animation-delay: 8s;
     }
 
-    /* Row 1: Professional (4 items, 48s cycle) */
-    .epithets-row-1 .epithets-wrapper {
-        animation: rotateRow1 48s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    @keyframes rotate4 {
+        0%,    21% { transform: translateY(0); }
+        25%,   46% { transform: translateY(calc(-1 * var(--ep-h))); }
+        50%,   71% { transform: translateY(calc(-2 * var(--ep-h))); }
+        75%,   96% { transform: translateY(calc(-3 * var(--ep-h))); }
+        100%       { transform: translateY(0); }
+    }
+    @keyframes rotate3 {
+        0%,    28%  { transform: translateY(0); }
+        33.3%, 62%  { transform: translateY(calc(-1 * var(--ep-h))); }
+        66.6%, 95%  { transform: translateY(calc(-2 * var(--ep-h))); }
+        100%        { transform: translateY(0); }
     }
 
-    @keyframes rotateRow1 {
-        0%, 21.6% {
-            transform: translateY(0);
-        }
-        25%, 46.6% {
-            transform: translateY(calc(-1 * var(--epithet-height)));
-        }
-        50%, 71.6% {
-            transform: translateY(calc(-2 * var(--epithet-height)));
-        }
-        75%, 96.6% {
-            transform: translateY(calc(-3 * var(--epithet-height)));
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
-
-    /* Row 2: Interests (3 items, 39s cycle, 5s delay offset) */
-    .epithets-row-2 .epithets-wrapper {
-        animation: rotateRow2 39s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-        animation-delay: 5s;
-    }
-
-    @keyframes rotateRow2 {
-        0%, 28.8% {
-            transform: translateY(0);
-        }
-        33.3%, 62.1% {
-            transform: translateY(calc(-1 * var(--epithet-height)));
-        }
-        66.6%, 95.4% {
-            transform: translateY(calc(-2 * var(--epithet-height)));
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
-
-    /* Row 3: Descriptive (4 items, 56s cycle, 11s delay offset) */
-    .epithets-row-3 .epithets-wrapper {
-        animation: rotateRow3 56s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-        animation-delay: 11s;
-    }
-
-    @keyframes rotateRow3 {
-        0%, 21.6% {
-            transform: translateY(0);
-        }
-        25%, 46.6% {
-            transform: translateY(calc(-1 * var(--epithet-height)));
-        }
-        50%, 71.6% {
-            transform: translateY(calc(-2 * var(--epithet-height)));
-        }
-        75%, 96.6% {
-            transform: translateY(calc(-3 * var(--epithet-height)));
-        }
-        100% {
-            transform: translateY(0);
+    @media (prefers-reduced-motion: reduce) {
+        .ep-row-1 .ep-track,
+        .ep-row-2 .ep-track,
+        .ep-row-3 .ep-track {
+            animation: none;
         }
     }
 </style>

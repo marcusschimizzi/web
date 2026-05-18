@@ -20,15 +20,22 @@ const posts = allPosts
 ---
 
 <PageLayout
-    title="Blog | Marcus Schimizzi"
+    title="Writing | Marcus Schimizzi"
     description="Thoughts, tutorials, and insights on software development and design."
 >
-    <div class="max-w-3xl mx-auto">
-        <h1 class="text-5xl font-bold mb-12 text-gray-100">Blog</h1>
+    <div class="page blog">
+        <header class="page-header">
+            <span class="section-num">N° · Writing</span>
+            <h1 class="page-title">Notes &amp; <em>essays.</em></h1>
+            <p class="page-lead">
+                Things I've been thinking about — software, tooling, and the occasional aside.
+            </p>
+        </header>
+
         {posts.length === 0 ? (
-            <p class="text-gray-400 text-lg">No posts yet. Check back soon!</p>
+            <p class="empty">No posts yet. Check back soon.</p>
         ) : (
-            <div class="space-y-6">
+            <div class="posts">
                 {posts.map((post) => (
                     <BlogPostCard
                         title={post.data.title}
@@ -43,3 +50,56 @@ const posts = allPosts
         )}
     </div>
 </PageLayout>
+
+<style>
+    .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .page-header {
+        padding-bottom: 3rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        letter-spacing: -0.035em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin: 0 0 1.5rem;
+    }
+    .page-title em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+        letter-spacing: -0.015em;
+    }
+    .page-lead {
+        font-family: var(--font-sans);
+        font-size: 1.125rem;
+        color: var(--ink-dim);
+        max-width: 56ch;
+        line-height: 1.55;
+        margin: 0;
+    }
+    .empty {
+        font-family: var(--font-sans);
+        font-size: 1.125rem;
+        color: var(--ink-dim);
+        padding: 2rem 0;
+    }
+    .posts { display: flex; flex-direction: column; }
+</style>

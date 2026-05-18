@@ -3,14 +3,12 @@ import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 
-// Cache fonts across all page renders during a single build
-let fontCache: { regular: ArrayBuffer; bold: ArrayBuffer } | null = null;
+let fontCache: { regular: ArrayBuffer; medium: ArrayBuffer; italicSerif: ArrayBuffer } | null = null;
 
-async function loadFonts(): Promise<{ regular: ArrayBuffer; bold: ArrayBuffer }> {
+async function loadFonts(): Promise<{ regular: ArrayBuffer; medium: ArrayBuffer; italicSerif: ArrayBuffer }> {
     if (fontCache) return fontCache;
 
-    async function fetchFont(weight: number): Promise<ArrayBuffer> {
-        const api = `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}`;
+    async function fetchFont(api: string): Promise<ArrayBuffer> {
         const css = await fetch(api, {
             headers: {
                 // BB10 user-agent returns woff/truetype format (satori doesn't support woff2)
@@ -23,19 +21,23 @@ async function loadFonts(): Promise<{ regular: ArrayBuffer; bold: ArrayBuffer }>
             /src: url\((.+?)\) format\('(opentype|truetype|woff)'\)/,
         );
         if (!match?.[1]) {
-            throw new Error(`Failed to load Inter font weight ${weight}`);
+            throw new Error(`Failed to load font: ${api}`);
         }
 
         return fetch(match[1]).then((r) => r.arrayBuffer());
     }
 
-    const [regular, bold] = await Promise.all([fetchFont(400), fetchFont(700)]);
-    fontCache = { regular, bold };
+    const [regular, medium, italicSerif] = await Promise.all([
+        fetchFont('https://fonts.googleapis.com/css2?family=Geist:wght@400'),
+        fetchFont('https://fonts.googleapis.com/css2?family=Geist:wght@500'),
+        fetchFont('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1'),
+    ]);
+    fontCache = { regular, medium, italicSerif };
     return fontCache;
 }
 
 function buildOGMarkup(title: string): Record<string, unknown> {
-    const fontSize = title.length > 50 ? 52 : title.length > 35 ? 64 : 76;
+    const fontSize = title.length > 50 ? 56 : title.length > 35 ? 70 : 84;
 
     return {
         type: 'div',
@@ -45,38 +47,95 @@ function buildOGMarkup(title: string): Record<string, unknown> {
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                background: 'linear-gradient(135deg, #1f5abd 0%, #8910a8 50%, #5435b3 100%)',
-                padding: '60px 80px',
+                justifyContent: 'space-between',
+                background: '#050505',
+                padding: '70px 80px',
+                position: 'relative',
             },
             children: [
+                // Top eyebrow row
+                {
+                    type: 'div',
+                    props: {
+                        style: {
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '14px',
+                            color: '#8a8580',
+                            fontSize: 18,
+                            fontFamily: 'Geist',
+                            letterSpacing: '2px',
+                            textTransform: 'uppercase',
+                        },
+                        children: [
+                            {
+                                type: 'div',
+                                props: { style: { width: 10, height: 10, background: '#e6b54a' } },
+                            },
+                            {
+                                type: 'div',
+                                props: {
+                                    style: { display: 'flex', color: '#f4f1ea', fontWeight: 500 },
+                                    children: 'Marcus Schimizzi',
+                                },
+                            },
+                            {
+                                type: 'div',
+                                props: { style: { width: 28, height: 1, background: '#4a4742' } },
+                            },
+                            {
+                                type: 'div',
+                                props: { style: { display: 'flex' }, children: 'schimizzi.io' },
+                            },
+                        ],
+                    },
+                },
+                // Title
                 {
                     type: 'div',
                     props: {
                         style: {
                             display: 'flex',
                             fontSize,
-                            fontWeight: 700,
-                            color: 'white',
-                            textAlign: 'center',
-                            lineHeight: 1.2,
+                            fontFamily: 'Geist',
+                            fontWeight: 500,
+                            color: '#f4f1ea',
+                            letterSpacing: '-2px',
+                            lineHeight: 1.0,
                             maxWidth: '1000px',
                         },
                         children: title,
                     },
                 },
+                // Bottom bar
                 {
                     type: 'div',
                     props: {
                         style: {
                             display: 'flex',
-                            fontSize: 28,
-                            fontWeight: 400,
-                            color: 'rgba(255, 255, 255, 0.7)',
-                            marginTop: '32px',
+                            alignItems: 'baseline',
+                            justifyContent: 'space-between',
+                            borderTop: '1px solid #2a2826',
+                            paddingTop: 20,
+                            fontSize: 18,
+                            fontFamily: 'Geist',
+                            color: '#8a8580',
+                            letterSpacing: '1.5px',
+                            textTransform: 'uppercase',
                         },
-                        children: 'schimizzi.io',
+                        children: [
+                            {
+                                type: 'div',
+                                props: { style: { display: 'flex' }, children: 'Software engineer · Chicago' },
+                            },
+                            {
+                                type: 'div',
+                                props: {
+                                    style: { display: 'flex', color: '#e6b54a', fontFamily: 'Instrument Serif', fontStyle: 'italic', fontSize: 24, textTransform: 'none' },
+                                    children: 'reliable things.',
+                                },
+                            },
+                        ],
                     },
                 },
             ],
@@ -90,7 +149,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         { slug: 'about', title: 'About' },
         { slug: 'projects', title: 'Projects' },
         { slug: 'experience', title: 'Experience' },
-        { slug: 'blog', title: 'Blog' },
+        { slug: 'blog', title: 'Writing' },
         { slug: 'contact', title: 'Contact' },
     ];
 
@@ -120,8 +179,9 @@ export const GET: APIRoute = async ({ props }) => {
         width: 1200,
         height: 630,
         fonts: [
-            { name: 'Inter', data: fonts.regular, weight: 400, style: 'normal' as const },
-            { name: 'Inter', data: fonts.bold, weight: 700, style: 'normal' as const },
+            { name: 'Geist', data: fonts.regular, weight: 400, style: 'normal' as const },
+            { name: 'Geist', data: fonts.medium, weight: 500, style: 'normal' as const },
+            { name: 'Instrument Serif', data: fonts.italicSerif, weight: 400, style: 'italic' as const },
         ],
     });
 

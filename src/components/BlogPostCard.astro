@@ -19,16 +19,65 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 });
 ---
 
-<article class="bg-gray-900/50 rounded-lg p-6 hover:bg-gray-900/70 transition-colors">
-    <a href={`/blog/${slug}`} class="block group">
-        <div class="mb-3 flex flex-wrap items-center gap-4 text-sm text-gray-400">
+<article class="post-card">
+    <a href={`/blog/${slug}`} class="post-link">
+        <div class="post-meta">
             <time>{formattedDate}</time>
-            {readingTime && <span class="text-primary-400">{readingTime}</span>}
+            {readingTime && (
+                <>
+                    <span class="sep">·</span>
+                    <span class="read-time">{readingTime}</span>
+                </>
+            )}
         </div>
-        <h2 class="text-xl font-semibold mb-2 text-gray-100 group-hover:text-primary-400 transition-colors">
-            {title}
-        </h2>
-        <p class="text-gray-400 mb-4 line-clamp-2">{description}</p>
-        <TagList tags={tags} />
+        <h2 class="post-title">{title}</h2>
+        <p class="post-desc">{description}</p>
+        {tags.length > 0 && <TagList {tags} />}
     </a>
 </article>
+
+<style>
+    .post-card {
+        border-bottom: 1px solid var(--rule);
+        transition: padding 0.4s cubic-bezier(.2,.7,.2,1);
+    }
+    .post-card:hover { padding-left: 1rem; }
+    .post-link {
+        display: block;
+        padding: 2rem 0;
+        text-decoration: none;
+        color: var(--ink);
+    }
+    .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-dim);
+        margin-bottom: 0.75rem;
+    }
+    .post-meta .sep { color: var(--ink-faint); }
+    .post-meta .read-time { color: var(--gold); }
+    .post-title {
+        font-family: var(--font-sans);
+        font-size: clamp(1.5rem, 2.6vw, 2rem);
+        font-weight: 400;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        margin: 0 0 0.75rem;
+        color: var(--ink);
+        transition: color 0.3s ease;
+    }
+    .post-card:hover .post-title { color: var(--gold); }
+    .post-desc {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        color: var(--ink-dim);
+        line-height: 1.55;
+        margin: 0 0 1rem;
+        max-width: 60ch;
+    }
+</style>

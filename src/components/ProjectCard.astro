@@ -13,37 +13,134 @@ interface Props {
 const { title, description, thumbnail, slug, featured = false } = Astro.props;
 ---
 
-<a href={`/projects/${slug}`} class="group block h-full">
-    <div class={`h-full flex flex-col rounded-xl bg-gray-900/50 overflow-hidden border transition-all duration-300 hover:border-blue-500/50 ${featured ? 'border-amber-500/30' : 'border-gray-800'}`}>
-        <!-- Featured indicator -->
+<a href={`/projects/${slug}`} class="project-card group">
+    <div class="thumb">
+        <Image
+            src={thumbnail}
+            alt={title}
+            width={1280}
+            height={720}
+            class="thumb-img"
+        />
+        <div class="thumb-overlay"></div>
         {featured && (
-            <div class="flex items-center gap-1.5 px-4 py-2 bg-amber-500/10 border-b border-amber-500/20">
-                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                </svg>
-                <span class="text-sm font-medium text-amber-400">Featured</span>
-            </div>
+            <span class="featured-tag" aria-label="Featured project">
+                <span class="featured-dot"></span>
+                Featured
+            </span>
         )}
+    </div>
 
-        <!-- Thumbnail -->
-         <div class="aspect-video overflow-hidden">
-             <Image
-                 src={thumbnail}
-                 alt={title}
-                 width={1280}
-                 height={720}
-                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-             />
-         </div>
-
-        <!-- Content -->
-        <div class="p-5 flex-1 flex flex-col">
-            <h2 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                {title}
-            </h2>
-            <p class="text-gray-300 text-sm leading-relaxed flex-1">
-                {description}
-            </p>
-        </div>
+    <div class="card-body">
+        <h2 class="card-title">{title}</h2>
+        <p class="card-desc">{description}</p>
+        <span class="card-cta">
+            <span>Read more</span>
+            <span class="arr">→</span>
+        </span>
     </div>
 </a>
+
+<style>
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--rule);
+        background: var(--paper-raised);
+        overflow: hidden;
+        transition: border-color 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1);
+    }
+    .project-card:hover {
+        border-color: rgba(230, 181, 74, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .thumb {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        position: relative;
+    }
+    .thumb-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
+        filter: saturate(0.9);
+    }
+    .project-card:hover .thumb-img {
+        transform: scale(1.03);
+        filter: saturate(1);
+    }
+    .thumb-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(5,5,5,0.4), transparent 50%);
+        pointer-events: none;
+    }
+
+    .featured-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5ch;
+        padding: 0.3rem 0.6rem;
+        font-family: var(--font-mono);
+        font-size: 0.625rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        background: rgba(5, 5, 5, 0.7);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(230, 181, 74, 0.3);
+    }
+    .featured-dot {
+        width: 6px; height: 6px;
+        background: var(--gold);
+        display: inline-block;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: 1.375rem;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        color: var(--ink);
+        margin: 0 0 0.6rem;
+        transition: color 0.2s ease;
+    }
+    .project-card:hover .card-title { color: var(--gold); }
+    .card-desc {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        line-height: 1.55;
+        color: var(--ink-dim);
+        margin: 0 0 1.25rem;
+        flex: 1;
+    }
+    .card-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        transition: color 0.2s ease;
+    }
+    .project-card:hover .card-cta { color: var(--gold); }
+    .card-cta .arr { transition: transform 0.3s ease; }
+    .project-card:hover .card-cta .arr { transform: translateX(4px); }
+</style>

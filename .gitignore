@@ -31,3 +31,12 @@ yarn-error.log*
 
 # Astro
 .astro/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Local review screenshots (work artifacts, not source)
+/port-*.png
+/redesign-v1-*.png
+/rotor-*.png
+/logo-options*.png
