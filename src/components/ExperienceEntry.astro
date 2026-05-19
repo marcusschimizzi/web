@@ -14,37 +14,106 @@ interface Props {
 const { institution, role, startDate, endDate, description, image } = Astro.props;
 ---
 
-<article class="relative pl-8 pb-8 border-l-2 border-gray-700 last:pb-0">
-    <!-- Timeline dot -->
-    <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary-500 border-4 border-gray-900"></div>
+<article class="exp">
+    <span class="exp-dot" aria-hidden="true"></span>
 
-    <!-- Logo and content container -->
-    <div class="flex flex-col md:flex-row gap-4">
-        <!-- Logo -->
-         {image && (
-             typeof image === 'string' ? (
-                 <img
-                     src={image as string}
-                     alt={`${institution} logo`}
-                     class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-contain bg-gray-800/50 p-1 flex-shrink-0"
-                 />
-             ) : (
-                 <Image
-                     src={image as ImageMetadata}
-                     alt={`${institution} logo`}
-                     width={64}
-                     height={64}
-                     class="w-12 h-12 md:w-16 md:h-16 rounded-lg object-contain bg-gray-800/50 p-1 flex-shrink-0"
-                 />
-             )
-         )}
-
-        <!-- Content -->
-        <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white">{role}</h3>
-            <p class="text-primary-400">{institution}</p>
-            <p class="text-sm text-gray-400 mt-1">{startDate} — {endDate}</p>
-            <p class="text-gray-300 mt-3 leading-relaxed">{description}</p>
+    <div class="exp-body">
+        <div class="exp-head">
+            {image && (
+                typeof image === 'string' ? (
+                    <img
+                        src={image as string}
+                        alt={`${institution} logo`}
+                        class="exp-logo"
+                    />
+                ) : (
+                    <Image
+                        src={image as ImageMetadata}
+                        alt={`${institution} logo`}
+                        width={64}
+                        height={64}
+                        class="exp-logo"
+                    />
+                )
+            )}
+            <div class="exp-titles">
+                <h3 class="exp-role">{role}</h3>
+                <p class="exp-inst">{institution}</p>
+                <p class="exp-dates">{startDate} — {endDate}</p>
+            </div>
         </div>
+        <p class="exp-desc">{description}</p>
     </div>
 </article>
+
+<style>
+    .exp {
+        position: relative;
+        padding-left: 2rem;
+        padding-bottom: 2.5rem;
+        border-left: 1px solid var(--rule-strong);
+    }
+    .exp:last-child { padding-bottom: 0; border-left-color: transparent; }
+    .exp-dot {
+        position: absolute;
+        left: -6px;
+        top: 0.4rem;
+        width: 11px; height: 11px;
+        background: var(--paper);
+        border: 1px solid var(--gold);
+    }
+    .exp-dot::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--gold);
+    }
+
+    .exp-body { display: flex; flex-direction: column; gap: 0.75rem; }
+    .exp-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .exp-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        background: var(--paper-raised);
+        padding: 0.25rem;
+        border: 1px solid var(--rule);
+        flex-shrink: 0;
+    }
+    .exp-titles { flex: 1; min-width: 0; }
+    .exp-role {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: 1.125rem;
+        letter-spacing: -0.015em;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.2;
+    }
+    .exp-inst {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        color: var(--gold);
+        margin: 0.2rem 0 0;
+    }
+    .exp-dates {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        color: var(--ink-dim);
+        margin: 0.4rem 0 0;
+    }
+    .exp-desc {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--ink-dim);
+        margin: 0;
+        max-width: 60ch;
+    }
+</style>

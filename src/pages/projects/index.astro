@@ -9,17 +9,73 @@ const projects = (await getCollection('projects')).sort(
 ---
 
 <PageLayout title="Projects | Marcus Schimizzi" description="A collection of web development projects I've built.">
-    <h1 class="text-5xl md:text-6xl font-bold text-white mb-12">Projects</h1>
+    <div class="page projects">
+        <header class="page-header">
+            <span class="section-num">N° · Projects</span>
+            <h1 class="page-title">Things I've built.</h1>
+            <p class="page-lead">
+                Side projects, work-adjacent experiments, and the occasional finished thing. Sorted by what I'm most proud of right now.
+            </p>
+        </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {projects.map((project) => (
-            <ProjectCard
-                title={project.data.title}
-                description={project.data.description}
-                thumbnail={project.data.thumbnail}
-                slug={project.id}
-                featured={project.data.featured}
-            />
-        ))}
+        <div class="grid">
+            {projects.map((project) => (
+                <ProjectCard
+                    title={project.data.title}
+                    description={project.data.description}
+                    thumbnail={project.data.thumbnail}
+                    slug={project.id}
+                    featured={project.data.featured}
+                />
+            ))}
+        </div>
     </div>
 </PageLayout>
+
+<style>
+    .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .page-header {
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        letter-spacing: -0.035em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin: 0 0 1.5rem;
+    }
+    .page-lead {
+        font-family: var(--font-sans);
+        font-size: 1.125rem;
+        color: var(--ink-dim);
+        max-width: 56ch;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    @media (min-width: 760px) {
+        .grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+</style>

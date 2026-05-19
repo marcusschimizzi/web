@@ -4,60 +4,120 @@ import { features } from '@/config';
 ---
 
 <PageLayout title="404 | Marcus Schimizzi" description="Page not found.">
-	<div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
-		<h1 class="text-9xl font-bold mb-4 gradient-404">404</h1>
-		<h2 class="text-4xl font-bold mb-4">Page not found</h2>
-		<p class="text-gray-300 text-lg mb-8 max-w-md">
-			The page you're looking for doesn't exist or has been moved. Let's get you back on track.
-		</p>
-		<a
-			href="/"
-			class="inline-block mb-12 px-8 py-3 bg-gradient-to-r from-primary-800 to-secondary-800 text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
-		>
-			Go Home
-		</a>
+    <div class="not-found">
+        <div class="big">
+            <span class="big-num">404</span>
+            <span class="big-em">not <em>found.</em></span>
+        </div>
+        <p class="msg">
+            The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+        </p>
+        <a href="/" class="btn">
+            <span>Go home</span>
+            <span class="arr">→</span>
+        </a>
 
-		<div class="border-t border-gray-700 pt-8 w-full">
-			<p class="text-gray-300 text-sm mb-6">Quick links to main sections:</p>
-			<div class="flex flex-wrap gap-4 justify-center">
-				<a href="/projects" class="text-primary-400 hover:text-primary-300 transition-colors">
-					Projects
-				</a>
-				{features.blog && (
-				<>
-				<span class="text-gray-600">•</span>
-				<a href="/blog" class="text-primary-400 hover:text-primary-300 transition-colors">
-					Blog
-				</a>
-				</>
-				)}
-				<span class="text-gray-600">•</span>
-				<a href="/about" class="text-primary-400 hover:text-primary-300 transition-colors">
-					About
-				</a>
-				<span class="text-gray-600">•</span>
-				<a href="/experience" class="text-primary-400 hover:text-primary-300 transition-colors">
-					Experience
-				</a>
-			</div>
-		</div>
-	</div>
+        <div class="quick">
+            <p class="quick-label">Quick links</p>
+            <div class="quick-links">
+                <a href="/projects">Projects</a>
+                {features.blog && (<a href="/blog">Writing</a>)}
+                <a href="/about">About</a>
+                <a href="/experience">Experience</a>
+            </div>
+        </div>
+    </div>
 </PageLayout>
 
 <style>
-	.gradient-404 {
-		font-size: 8rem;
-		font-weight: 700;
-		margin: 0 0 1rem 0;
-		background: linear-gradient(160deg, #1F5ABD 0%, #8910A8 50%, #5435B3 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
+    .not-found {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    .big {
+        display: flex;
+        flex-direction: column;
+        line-height: 0.9;
+    }
+    .big-num {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(5rem, 18vw, 14rem);
+        letter-spacing: -0.045em;
+        color: var(--ink-faint);
+    }
+    .big-em {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2rem, 5vw, 4rem);
+        letter-spacing: -0.025em;
+        color: var(--ink);
+        margin-top: 0.5rem;
+    }
+    .big-em em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+    }
+    .msg {
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        color: var(--ink-dim);
+        max-width: 44ch;
+        line-height: 1.55;
+        margin: 0;
+    }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--gold);
+        color: var(--paper);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .btn:hover { background: var(--gold-warm); transform: translateY(-1px); }
+    .btn .arr { transition: transform 0.2s ease; }
+    .btn:hover .arr { transform: translateX(3px); }
 
-	@media (max-width: 768px) {
-		.gradient-404 {
-			font-size: 5rem;
-		}
-	}
+    .quick {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--rule);
+        width: 100%;
+    }
+    .quick-label {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin: 0 0 1rem;
+    }
+    .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    .quick-links a {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 1px;
+        transition: color 0.2s ease;
+    }
+    .quick-links a:hover { color: var(--gold); }
 </style>

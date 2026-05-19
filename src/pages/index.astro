@@ -1,18 +1,16 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
 import Epithets from '@components/Epithets.astro';
-import SocialLinks from '@components/SocialLinks.astro';
 import { getReadingTime } from '../utils/readingTime';
 import { features } from '@/config';
 
 const featuredProjects = (await getCollection('projects'))
     .filter((p) => p.data.featured)
     .sort((a, b) => a.data.order - b.data.order)
-    .slice(0, 2);
+    .slice(0, 4);
 
 const latestPost = features.blog
     ? (await getCollection('blog'))
@@ -29,341 +27,558 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
 
 <BaseLayout
     title="Marcus Schimizzi"
-    description="Software engineer, lifelong learner, and tinkerer based in Chicago."
+    description="Software engineer building reliable things. Currently in Chicago, working on title automation at Qualia."
 >
     <Nav />
-    <!-- Hero: full-bleed, no container constraint -->
-    <section class="hero-section" transition:animate="fade">
-        <div class="hero-content">
-            <h1 class="hero-heading">Hi, I'm Marcus.</h1>
-            <Epithets />
-            <div class="social-links-wrapper">
-                <SocialLinks />
-            </div>
-        </div>
-    </section>
 
-    <div class="below-hero" transition:animate="fade">
-        <!-- Positioning statement -->
-        <section class="intro-section">
-            <p class="intro-text">
-              I'm a builder and tinkerer at heart and am always working on a side project (or five).
-            </p>
-            <br />
-            <p class="intro-text">
-                Currently a software engineer at <strong>Qualia</strong>, automating real estate title searches and exams using web scraping, multi-agent orchestration, and prompt engineering — turning something inherently brittle into something reliable.
-            </p>
-        </section>
+    <!-- Fixed gold edge marker (luxe brand detail) -->
+    <div class="edge-marker" aria-hidden="true"></div>
 
-        <!-- Featured Projects -->
-        <section class="featured-section">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <a href="/projects" class="section-link">View all &rarr;</a>
+    <main class="home" transition:animate="fade">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-eyebrow">
+                <span class="num">EST. 1997</span>
+                <span class="rule"></span>
+                <span>Portfolio · MMXXVI</span>
             </div>
-            <div class="featured-grid">
-                {featuredProjects.map((project) => (
-                    <a href={`/projects/${project.id}`} class="featured-card group">
-                        <div class="featured-thumb">
-                            <Image
-                                src={project.data.thumbnail}
-                                alt={project.data.title}
-                                width={640}
-                                height={360}
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                        </div>
-                        <div class="featured-info">
-                            <h3 class="featured-name">{project.data.title}</h3>
-                            <p class="featured-desc">{project.data.description}</p>
-                            <div class="featured-tech">
-                                {project.data.technologies.slice(0, 3).map((tech) => (
-                                    <span class="tech-pill">{tech}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </a>
-                ))}
-            </div>
-        </section>
 
-        <!-- Latest from the blog -->
-        {latestPost && (
-            <section class="latest-post-section">
-                <div class="section-header">
-                    <h2 class="section-title">Latest Post</h2>
-                    <a href="/blog" class="section-link">All posts &rarr;</a>
+            <div class="hero-content">
+                <h1 class="headline">
+                    <span class="line"><span>Software</span></span>
+                    <span class="line"><span>engineer</span></span>
+                    <span class="line"><span>building</span></span>
+                    <span class="line"><span><em id="rotor" data-words="creative,delightful,useful,considered,reliable,thoughtful,durable,useful">reliable</em> things.</span></span>
+                </h1>
+
+                <Epithets />
+
+                <div class="hero-meta">
+                    <div>
+                        <span class="label">Currently</span>
+                        <span class="value"><strong>Qualia</strong> — automating title search &amp; exam</span>
+                    </div>
+                    <div>
+                        <span class="label">Based</span>
+                        <span class="value">Chicago, Illinois</span>
+                    </div>
+                    <div>
+                        <span class="label">Available</span>
+                        <span class="value"><a href="/contact">Open to a conversation →</a></span>
+                    </div>
                 </div>
-                <a href={`/blog/${latestPost.id}`} class="latest-post-card group">
-                    <div class="latest-post-meta">
+            </div>
+
+            <div class="scroll-cue" aria-hidden="true">
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="intro">
+            <div class="section-num">N° 01 — Introduction</div>
+            <div class="intro-body">
+                <p class="intro-lead">A builder and tinkerer at heart, always working on a side project <span class="accent">(or five).</span></p>
+                <p class="intro-detail">
+                    Currently a software engineer at <strong>Qualia</strong>, automating real estate title searches and exams using web scraping, multi-agent orchestration, and prompt engineering — turning something inherently brittle into something <strong>reliable.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- SELECTED WORK -->
+        <section class="work">
+            <div class="work-header">
+                <span class="section-num">N° 02 — Selected Work</span>
+                <a href="/projects" class="view-all">View all <span class="arr">→</span></a>
+            </div>
+
+            <ul class="work-list">
+                {featuredProjects.map((project, i) => (
+                    <li>
+                        <a class="work-item" href={`/projects/${project.id}`}>
+                            <span class="work-num">{String(i + 1).padStart(2, '0')}</span>
+                            <span class="work-name">
+                                <span class="orig">{project.data.title}</span>
+                                <span class="alt">{project.data.title}</span>
+                            </span>
+                            <span class="work-desc">{project.data.description}</span>
+                            <span class="work-meta">
+                                {project.data.technologies.slice(0, 2).map((tech, idx) => (
+                                    <>
+                                        {idx > 0 && <span class="dot">·</span>}
+                                        <span>{tech}</span>
+                                    </>
+                                ))}
+                            </span>
+                            <span class="work-arrow">→</span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <!-- LATEST POST -->
+        {latestPost && (
+            <section class="latest-post">
+                <div class="work-header">
+                    <span class="section-num">N° 03 — Latest Writing</span>
+                    <a href="/blog" class="view-all">All posts <span class="arr">→</span></a>
+                </div>
+                <a href={`/blog/${latestPost.id}`} class="latest-card">
+                    <div class="latest-meta">
                         <time>{latestPostDate}</time>
-                        <span class="text-gray-600">&middot;</span>
-                        <span class="text-primary-400">{getReadingTime(latestPost.body ?? '')}</span>
+                        <span class="sep">·</span>
+                        <span class="read-time">{getReadingTime(latestPost.body ?? '')}</span>
                     </div>
-                    <h3 class="latest-post-title">{latestPost.data.title}</h3>
-                    <p class="latest-post-desc">{latestPost.data.description}</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        {latestPost.data.tags.map((tag) => (
-                            <span class="bg-gray-800 text-primary-400 px-3 py-1 rounded-full text-sm">{tag}</span>
-                        ))}
-                    </div>
+                    <h3 class="latest-title">{latestPost.data.title}</h3>
+                    <p class="latest-desc">{latestPost.data.description}</p>
+                    {latestPost.data.tags.length > 0 && (
+                        <div class="latest-tags">
+                            {latestPost.data.tags.map((tag) => (
+                                <span class="latest-tag">{tag}</span>
+                            ))}
+                        </div>
+                    )}
                 </a>
             </section>
         )}
-    </div>
+    </main>
+
     <Footer />
 </BaseLayout>
 
+<script>
+    // Pick a random adjective for the gold word in the hero once per page load.
+    // No rotation — quieter than animating both this and the epithets.
+    function pickRotorWord() {
+        const el = document.getElementById('rotor');
+        if (!el) return;
+        const words = (el.dataset.words || '').split(',').map(w => w.trim()).filter(Boolean);
+        if (words.length < 2) return;
+        const word = words[Math.floor(Math.random() * words.length)];
+        el.textContent = word;
+        el.setAttribute('aria-label', word);
+    }
+
+    pickRotorWord();
+    document.addEventListener('astro:page-load', pickRotorWord);
+</script>
+
 <style>
-    .hero-section {
+    .home {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    /* Fixed gold edge marker — luxe brand detail */
+    .edge-marker {
+        position: fixed;
+        top: 0;
+        right: clamp(1.25rem, 3vw, 3rem);
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, transparent 0%, var(--rule) 12%, var(--rule) 88%, transparent 100%);
+        z-index: 3;
+        pointer-events: none;
+    }
+    .edge-marker::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -2.5px;
+        width: 6px;
+        height: 80px;
+        background: var(--gold);
+        transform: translateY(-50%);
+    }
+    @media (max-width: 800px) {
+        .edge-marker { display: none; }
+    }
+
+    /* ─── HERO ─────────────────────────────────────── */
+    .hero {
         min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: end;
+        padding: 7rem clamp(1.25rem, 3vw, 3rem) 4rem;
+        position: relative;
+    }
+
+    .hero-eyebrow {
+        position: absolute;
+        top: 7rem;
+        left: clamp(1.25rem, 3vw, 3rem);
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: linear-gradient(-45deg, #1f5abd, #8910a8, #5435b3, #48c774);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        margin-top: -6rem;
-        padding-top: 6rem;
-        position: relative;
-        overflow: hidden;
+        gap: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        opacity: 0;
+        animation: fadeIn 1s ease-out 0.6s forwards;
     }
-
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        opacity: 0.03;
-        pointer-events: none;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    .hero-section::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 120px;
-        background: linear-gradient(to bottom, transparent, #232323);
-        pointer-events: none;
-    }
+    .hero-eyebrow .rule { width: 36px; height: 1px; background: var(--rule-strong); }
+    .hero-eyebrow .num { color: var(--gold); }
 
     .hero-content {
-        text-align: center;
-        color: white;
-        padding: 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        width: 100%;
+    }
+
+    .headline {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        letter-spacing: -0.045em;
+        line-height: 0.88;
+        color: var(--ink);
+        font-size: clamp(3rem, 12vw, 12rem);
+        max-width: 14ch;
+        margin: 0;
+    }
+    .headline .line {
+        display: block;
+        overflow: hidden;
+    }
+    .headline .line > span {
+        display: inline-block;
+        transform: translateY(110%);
+        animation: rise 1.1s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+    .headline .line:nth-child(1) > span { animation-delay: 0.3s; }
+    .headline .line:nth-child(2) > span { animation-delay: 0.4s; }
+    .headline .line:nth-child(3) > span { animation-delay: 0.5s; }
+    .headline .line:nth-child(4) > span { animation-delay: 0.6s; }
+
+    .headline em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        color: var(--gold);
+        font-weight: 400;
+        letter-spacing: -0.02em;
         position: relative;
-        z-index: 1;
+        top: 0.04em;
     }
 
-    .hero-heading {
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 0.75rem;
-        line-height: 1.1;
-        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-    }
+    /* Adjective inside the headline. JS picks one at page load and it stays
+       fixed for the session — quieter than rotating both this and the epithets. */
+    #rotor { display: inline-block; }
 
-    @media (min-width: 768px) {
-        .hero-heading {
-            font-size: 4.5rem;
-        }
+    /* Meta row */
+    .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: end;
+        gap: 2rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--rule);
+        opacity: 0;
+        animation: fadeIn 1s ease-out 1.2s forwards;
     }
-
-    @media (min-width: 1024px) {
-        .hero-heading {
-            font-size: 5rem;
-        }
+    .hero-meta .label {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-bottom: 0.6rem;
     }
+    .hero-meta .value {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        letter-spacing: -0.005em;
+        color: var(--ink);
+    }
+    .hero-meta .value strong { font-weight: 500; }
+    .hero-meta .value a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 1px;
+        transition: color 0.3s ease;
+    }
+    .hero-meta .value a:hover { color: var(--gold); }
 
-    .social-links-wrapper {
-        margin-top: 2rem;
+    .scroll-cue {
+        position: absolute;
+        bottom: 4rem;
+        right: clamp(1.25rem, 3vw, 3rem);
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
         display: flex;
-        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        opacity: 0;
+        animation: fadeIn 1s ease-out 1.4s forwards;
+    }
+    .scroll-cue::before {
+        content: '';
+        width: 1px; height: 60px;
+        background: linear-gradient(to bottom, var(--ink-dim), transparent);
     }
 
-    /* Below hero content */
-    .below-hero {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 2rem 4rem;
+    /* ─── INTRO ───────────────────────────────────── */
+    .intro {
+        padding: 8rem clamp(1.25rem, 3vw, 3rem) 6rem;
+        display: grid;
+        grid-template-columns: 4fr 8fr;
+        gap: 4rem;
+        border-top: 1px solid var(--rule);
+    }
+    .section-num {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        color: var(--gold);
+        text-transform: uppercase;
+    }
+    .intro-lead {
+        font-family: var(--font-sans);
+        font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+        font-weight: 300;
+        line-height: 1.25;
+        letter-spacing: -0.015em;
+        color: var(--ink);
+        max-width: 22ch;
+        margin: 0;
+    }
+    .intro-detail {
+        margin-top: 2rem;
+        font-size: clamp(1rem, 1.4vw, 1.25rem);
+        font-weight: 400;
+        line-height: 1.55;
+        color: var(--ink-dim);
+        max-width: 38ch;
+    }
+    .intro-detail strong {
+        color: var(--ink);
+        font-weight: 500;
+    }
+    .intro-lead .accent {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+        letter-spacing: -0.005em;
     }
 
-    /* Positioning statement */
-    .intro-section {
-        padding: 3rem 0 2.5rem;
-        border-bottom: 1px solid rgb(31 41 55);
+    /* ─── WORK ────────────────────────────────────── */
+    .work {
+        padding: 4rem clamp(1.25rem, 3vw, 3rem) 6rem;
     }
-
-    .intro-text {
-        font-size: 1.25rem;
-        line-height: 1.75;
-        color: rgb(209 213 219);
-        max-width: 640px;
-    }
-
-    .intro-text strong {
-        color: white;
-        font-weight: 600;
-    }
-
-    /* Shared section styles */
-    .section-header {
+    .work-header {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
-        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--rule-strong);
+        gap: 1rem;
+        flex-wrap: wrap;
     }
+    .view-all {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s ease;
+    }
+    .view-all:hover { color: var(--gold); }
+    .view-all .arr { transition: transform 0.3s ease; }
+    .view-all:hover .arr { transform: translateX(4px); }
 
-    .section-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: white;
+    .work-list {
+        list-style: none;
+        padding: 0;
         margin: 0;
     }
 
-    .section-link {
-        font-size: 0.875rem;
-        color: rgb(96 165 250);
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .section-link:hover {
-        color: rgb(147 197 253);
-    }
-
-    /* Featured projects */
-    .featured-section {
-        padding: 2.5rem 0;
-        border-bottom: 1px solid rgb(31 41 55);
-    }
-
-    .featured-grid {
+    .work-item {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-        .featured-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    .featured-card {
-        background: rgb(17 24 39 / 0.5);
-        border: 1px solid rgb(31 41 55);
-        border-radius: 0.75rem;
-        overflow: hidden;
+        grid-template-columns: 0.6fr 4fr 2.5fr 1.4fr 0.6fr;
+        align-items: center;
+        padding: 2.25rem 0;
+        border-bottom: 1px solid var(--rule);
+        position: relative;
+        cursor: pointer;
         text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        color: var(--ink);
+        transition: padding 0.4s cubic-bezier(.2,.7,.2,1);
     }
-
-    .featured-card:hover {
-        border-color: rgb(31 90 189 / 0.5);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.3);
+    .work-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, var(--paper-raised));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
     }
+    .work-item:hover::before { opacity: 1; }
+    .work-item:hover { padding-left: 1rem; }
 
-    .featured-thumb {
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
+    .work-num {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        color: var(--ink-dim);
+        font-variant-numeric: tabular-nums;
+        transition: color 0.3s ease;
     }
+    .work-item:hover .work-num { color: var(--gold); }
 
-    .featured-info {
-        padding: 1.25rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+    .work-name {
+        font-family: var(--font-sans);
+        font-weight: 400;
+        font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        position: relative;
+        transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
     }
-
-    .featured-name {
-        font-size: 1.125rem;
-        font-weight: 700;
-        color: white;
-        margin: 0 0 0.5rem;
-        transition: color 0.2s;
+    .work-item:hover .work-name { transform: translateX(0.5rem); }
+    .work-name .alt {
+        display: inline-block;
+        position: absolute;
+        left: 0; top: 0;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 0.6s cubic-bezier(.2,.7,.2,1);
+        letter-spacing: -0.01em;
     }
+    .work-item:hover .work-name .alt { clip-path: inset(0 0 0 0); }
+    .work-name .orig { transition: opacity 0.3s ease; }
+    .work-item:hover .work-name .orig { opacity: 0; }
 
-    .group:hover .featured-name {
-        color: rgb(96 165 250);
-    }
-
-    .featured-desc {
+    .work-desc {
+        font-family: var(--font-sans);
+        font-weight: 400;
         font-size: 0.875rem;
-        color: rgb(209 213 219);
-        margin: 0 0 0.75rem;
+        color: var(--ink-dim);
+        letter-spacing: -0.005em;
         line-height: 1.5;
-        flex: 1;
+        max-width: 36ch;
+    }
+    .work-meta {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        color: var(--ink-dim);
+        text-align: right;
+        text-transform: uppercase;
+        display: inline-flex;
+        gap: 0.5ch;
+        justify-content: flex-end;
+    }
+    .work-meta .dot { color: var(--ink-faint); }
+    .work-arrow {
+        text-align: right;
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        color: var(--ink-faint);
+        transition: color 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1);
+    }
+    .work-item:hover .work-arrow {
+        color: var(--gold);
+        transform: translateX(0.5rem);
     }
 
-    .featured-tech {
+    /* ─── LATEST POST ─────────────────────────────── */
+    .latest-post {
+        padding: 0 clamp(1.25rem, 3vw, 3rem) 6rem;
+    }
+    .latest-card {
+        display: block;
+        padding: 2.25rem 0;
+        text-decoration: none;
+        color: var(--ink);
+        border-bottom: 1px solid var(--rule);
+        transition: padding 0.4s cubic-bezier(.2,.7,.2,1);
+    }
+    .latest-card:hover { padding-left: 1rem; }
+    .latest-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--ink-dim);
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+    .latest-meta .sep { color: var(--ink-faint); }
+    .latest-meta .read-time { color: var(--gold); }
+    .latest-title {
+        font-family: var(--font-sans);
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 400;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        margin: 0 0 0.75rem;
+        transition: color 0.3s ease;
+    }
+    .latest-card:hover .latest-title { color: var(--gold); }
+    .latest-desc {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        color: var(--ink-dim);
+        line-height: 1.55;
+        max-width: 60ch;
+        margin: 0 0 1rem;
+    }
+    .latest-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
     }
-
-    .tech-pill {
-        font-size: 0.75rem;
-        padding: 0.125rem 0.5rem;
-        border-radius: 9999px;
-        background: rgb(31 41 55);
-        color: rgb(156 163 175);
+    .latest-tag {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        padding: 0.25rem 0.6rem;
+        border: 1px solid var(--rule-strong);
     }
 
-    /* Latest blog post */
-    .latest-post-section {
-        padding: 2.5rem 0;
-    }
-
-    .latest-post-card {
-        display: block;
-        background: rgb(17 24 39 / 0.5);
-        border: 1px solid rgb(31 41 55);
-        border-radius: 0.75rem;
-        padding: 1.5rem;
-        text-decoration: none;
-        transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .latest-post-card:hover {
-        border-color: rgb(31 90 189 / 0.5);
-        transform: translateY(-2px);
-    }
-
-    .latest-post-meta {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        color: rgb(209 213 219);
-        margin-bottom: 0.5rem;
-    }
-
-    .latest-post-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: white;
-        margin: 0 0 0.5rem;
-        transition: color 0.2s;
-    }
-
-    .group:hover .latest-post-title {
-        color: rgb(96 165 250);
-    }
-
-    .latest-post-desc {
-        font-size: 0.9rem;
-        color: rgb(209 213 219);
-        margin: 0;
-        line-height: 1.5;
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+        .hero { padding-top: 8rem; }
+        .hero-meta { grid-template-columns: 1fr; gap: 1.75rem; padding-top: 2rem; }
+        .intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 5rem clamp(1.25rem, 3vw, 3rem) 4rem; }
+        .work-item {
+            grid-template-columns: 0.7fr 4fr 1fr;
+            grid-template-areas:
+                "num name arr"
+                ".   desc desc"
+                ".   meta meta";
+            row-gap: 0.5rem;
+            padding: 1.75rem 0;
+        }
+        .work-num  { grid-area: num; }
+        .work-name { grid-area: name; font-size: clamp(1.5rem, 7vw, 2rem); }
+        .work-desc { grid-area: desc; }
+        .work-meta { grid-area: meta; justify-content: flex-start; }
+        .work-arrow{ grid-area: arr; }
+        .work-item:hover .work-name { transform: none; }
+        .scroll-cue { display: none; }
     }
 </style>

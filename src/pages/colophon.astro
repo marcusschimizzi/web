@@ -3,93 +3,187 @@ import PageLayout from '@layouts/PageLayout.astro';
 ---
 
 <PageLayout title="Colophon | Marcus Schimizzi" description="How this site was built — the stack, tools, and decisions behind schimizzi.io.">
-	<div class="max-w-2xl mb-12">
-		<h1 class="text-4xl font-bold mb-4">Colophon</h1>
-		<p class="text-gray-300 text-lg">
-			How this site is built, and the tools and decisions behind it.
-		</p>
-	</div>
+    <div class="page colophon">
+        <header class="page-header">
+            <span class="section-num">N° · Colophon</span>
+            <h1 class="page-title">How it's <em>made.</em></h1>
+            <p class="page-lead">
+                The tools and decisions behind this site.
+            </p>
+        </header>
 
-	<!-- Stack -->
-	<section class="mt-12 pt-10 border-t border-gray-800">
-		<h2 class="text-2xl font-bold mb-6">Stack</h2>
-		<div class="space-y-4 max-w-2xl">
-			<div>
-				<strong class="text-white">Astro 5</strong>
-				<span class="text-gray-300"> — Static site generator. Fast builds, zero client JS by default, and first-class support for MDX content collections. The right tool for a content-driven portfolio.</span>
-			</div>
-			<div>
-				<strong class="text-white">Tailwind CSS</strong>
-				<span class="text-gray-300"> — Utility-first styling with the Typography plugin for prose content. Custom color palette built around a blue–purple–green triad.</span>
-			</div>
-			<div>
-				<strong class="text-white">MDX</strong>
-				<span class="text-gray-300"> — Markdown with components. Project pages and blog posts live as content collections with typed frontmatter schemas.</span>
-			</div>
-			<div>
-				<strong class="text-white">TypeScript</strong>
-				<span class="text-gray-300"> — End to end. Config, utilities, content schemas — everything is typed.</span>
-			</div>
-		</div>
-	</section>
+        <section class="col-section">
+            <span class="section-num">N° 01 — Stack</span>
+            <dl class="col-list">
+                <div class="col-item"><dt>Astro 5</dt><dd>Static site generator. Fast builds, zero client JS by default, first-class MDX content collections. The right tool for a content-driven portfolio.</dd></div>
+                <div class="col-item"><dt>Tailwind CSS</dt><dd>Utility-first styling with the Typography plugin for prose content. Custom black-and-gold palette with ink/paper/gold tokens.</dd></div>
+                <div class="col-item"><dt>MDX</dt><dd>Markdown with components. Project pages and blog posts live as content collections with typed frontmatter.</dd></div>
+                <div class="col-item"><dt>TypeScript</dt><dd>End to end. Config, utilities, content schemas — everything typed.</dd></div>
+            </dl>
+        </section>
 
-	<!-- Hosting & Deployment -->
-	<section class="mt-12 pt-10 border-t border-gray-800">
-		<h2 class="text-2xl font-bold mb-6">Hosting & Deployment</h2>
-		<div class="space-y-4 max-w-2xl">
-			<div>
-				<strong class="text-white">Netlify</strong>
-				<span class="text-gray-300"> — Automatic deploys from Git, form handling for the contact page, and edge-optimized CDN. Push to main and it's live.</span>
-			</div>
-		</div>
-	</section>
+        <section class="col-section">
+            <span class="section-num">N° 02 — Hosting</span>
+            <dl class="col-list">
+                <div class="col-item"><dt>Netlify</dt><dd>Automatic deploys from Git, form handling for the contact page, and edge-optimized CDN. Push to main and it's live.</dd></div>
+            </dl>
+        </section>
 
-	<!-- Design -->
-	<section class="mt-12 pt-10 border-t border-gray-800">
-		<h2 class="text-2xl font-bold mb-6">Design</h2>
-		<div class="space-y-4 max-w-2xl">
-			<div>
-				<strong class="text-white">Custom design</strong>
-				<span class="text-gray-300"> — No template. Dark theme with a gradient hero (animated blue–purple–green), hand-tuned spacing, and a color system built from primary, secondary, tertiary, and pop scales.</span>
-			</div>
-			<div>
-				<strong class="text-white">Typography</strong>
-				<span class="text-gray-300"> — Helvetica/Arial stack for body text. Clean and readable without a custom font download.</span>
-			</div>
-			<div>
-				<strong class="text-white">Syntax highlighting</strong>
-				<span class="text-gray-300"> — Shiki with the <code class="text-primary-400">github-dark-dimmed</code> theme. Matches the site's dark palette.</span>
-			</div>
-		</div>
-	</section>
+        <section class="col-section">
+            <span class="section-num">N° 03 — Design</span>
+            <dl class="col-list">
+                <div class="col-item">
+                    <dt>Typography</dt>
+                    <dd>
+                        <strong>Geist</strong> for sans (display + body), <strong>Geist Mono</strong> for labels and metadata, <strong>Instrument Serif Italic</strong> for the gold accents. Loaded from Google Fonts.
+                    </dd>
+                </div>
+                <div class="col-item">
+                    <dt>Palette</dt>
+                    <dd>Black <code>#050505</code>, warm off-white <code>#f4f1ea</code>, brushed gold <code>#e6b54a</code>. One gold beat per section, never more.</dd>
+                </div>
+                <div class="col-item">
+                    <dt>Syntax highlighting</dt>
+                    <dd>Shiki with the <code>github-dark-dimmed</code> theme.</dd>
+                </div>
+            </dl>
+        </section>
 
-	<!-- Tools -->
-	<section class="mt-12 pt-10 border-t border-gray-800">
-		<h2 class="text-2xl font-bold mb-6">Built with</h2>
-		<div class="space-y-4 max-w-2xl">
-			<div>
-				<strong class="text-white">Cursor + Neovim</strong>
-				<span class="text-gray-300"> — Primary editors. Cursor for AI-assisted workflows, Neovim for speed.</span>
-			</div>
-			<div>
-				<strong class="text-white">Git CLI</strong>
-				<span class="text-gray-300"> — Version control the old-fashioned way.</span>
-			</div>
-		</div>
-	</section>
+        <section class="col-section">
+            <span class="section-num">N° 04 — Built with</span>
+            <dl class="col-list">
+                <div class="col-item"><dt>Cursor + Neovim</dt><dd>Primary editors. Cursor for AI-assisted workflows, Neovim for speed.</dd></div>
+                <div class="col-item"><dt>Git CLI</dt><dd>Version control the old-fashioned way.</dd></div>
+            </dl>
+        </section>
 
-	<!-- Conventions -->
-	<section class="mt-12 pt-10 border-t border-gray-800">
-		<h2 class="text-2xl font-bold mb-6">Conventions</h2>
-		<div class="space-y-3 text-gray-300 max-w-2xl">
-			<p>
-				This site follows a few community conventions I appreciate:
-			</p>
-			<ul class="list-disc list-inside space-y-2 text-gray-300">
-				<li><a href="https://nownownow.com/about" class="text-primary-400 hover:text-primary-300 transition-colors">/now page</a> — what I'm focused on right now</li>
-				<li><a href="https://uses.tech" class="text-primary-400 hover:text-primary-300 transition-colors">/uses page</a> — the tools and hardware in my daily setup</li>
-				<li>This page — a <a href="https://www.colophon.id/" class="text-primary-400 hover:text-primary-300 transition-colors">colophon</a>, documenting how the site itself was built</li>
-			</ul>
-		</div>
-	</section>
+        <section class="col-section">
+            <span class="section-num">N° 05 — Conventions</span>
+            <div class="prose-block">
+                <p>This site follows a few community conventions:</p>
+                <ul>
+                    <li><a href="https://nownownow.com/about">/now page</a> — what I'm focused on right now</li>
+                    <li><a href="https://uses.tech">/uses page</a> — the tools and hardware in my daily setup</li>
+                    <li>This page — a <a href="https://www.colophon.id/">colophon</a>, documenting how the site itself was built</li>
+                </ul>
+            </div>
+        </section>
+    </div>
 </PageLayout>
+
+<style>
+    .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .page-header {
+        padding-bottom: 3rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        letter-spacing: -0.035em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin: 0 0 1.5rem;
+    }
+    .page-title em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+        letter-spacing: -0.015em;
+    }
+    .page-lead {
+        font-family: var(--font-sans);
+        font-size: 1.125rem;
+        color: var(--ink-dim);
+        max-width: 56ch;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .col-section {
+        margin-top: 4rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--rule);
+    }
+    .col-section .section-num { margin-bottom: 1.75rem; }
+    .col-list { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 0; }
+    .col-item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .col-item:last-child { border-bottom: none; padding-bottom: 0; }
+    @media (min-width: 700px) {
+        .col-item { grid-template-columns: 1fr 2fr; gap: 1.5rem; }
+    }
+    .col-item dt {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0;
+    }
+    .col-item dd {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        color: var(--ink-dim);
+        line-height: 1.55;
+        margin: 0;
+    }
+    .col-item dd strong { color: var(--ink); font-weight: 500; }
+    .col-item dd code {
+        font-family: var(--font-mono);
+        font-size: 0.85em;
+        background: var(--paper-raised);
+        padding: 0.1em 0.35em;
+        border: 1px solid var(--rule);
+        color: var(--gold);
+    }
+
+    .prose-block {
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        color: var(--ink);
+        max-width: 60ch;
+    }
+    .prose-block ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .prose-block li::before {
+        content: '·';
+        color: var(--gold);
+        margin-right: 0.6rem;
+    }
+    .prose-block a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 1px;
+        transition: color 0.3s ease;
+    }
+    .prose-block a:hover { color: var(--gold); }
+</style>

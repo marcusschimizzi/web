@@ -24,76 +24,186 @@ const {
 } = project.data;
 ---
 
-<PageLayout 
-    title={`${title} | Marcus Schimizzi`} 
+<PageLayout
+    title={`${title} | Marcus Schimizzi`}
     description={description}
     type="project"
     technologies={technologies}
     projectUrl={link}
 >
-    <!-- Back link -->
-    <a href="/projects" class="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-8">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-        <span>Back to Projects</span>
-    </a>
-
-    <!-- Hero thumbnail -->
-    {thumbnail && (
-        <Image
-            src={thumbnail}
-            alt={title}
-            width={1200}
-            height={675}
-            class="w-full rounded-xl mb-8 border border-gray-800"
-        />
-    )}
-
-    <!-- Title and description -->
-    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
-    <p class="text-xl text-gray-400 mb-8">{description}</p>
-
-    <!-- Demo video -->
-    {demoVideo && (
-        <video
-            src={demoVideo}
-            controls
-            muted
-            loop
-            playsinline
-            class="w-full rounded-lg mb-8 border border-gray-800"
-        />
-    )}
-
-    <!-- External link button -->
-    {link && (
-        <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors mb-8"
-        >
-            <span>Visit Project</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
+    <div class="page project-detail">
+        <a href="/projects" class="back-link">
+            <span class="arr">←</span>
+            <span>Back to projects</span>
         </a>
-    )}
 
-    <!-- Technologies -->
-    {technologies && technologies.length > 0 && (
-        <div class="flex flex-wrap gap-2 mb-8">
-            {technologies.map((tech) => (
-                <span class="px-3 py-1 text-sm font-medium text-blue-300 bg-blue-500/10 border border-blue-500/20 rounded-full">
-                    {tech}
-                </span>
-            ))}
+        {thumbnail && (
+            <Image
+                src={thumbnail}
+                alt={title}
+                width={1400}
+                height={788}
+                class="project-hero"
+            />
+        )}
+
+        <header class="page-header">
+            <span class="section-num">N° · Project</span>
+            <h1 class="page-title">{title}</h1>
+            <p class="page-lead">{description}</p>
+        </header>
+
+        {demoVideo && (
+            <video
+                src={demoVideo}
+                controls
+                muted
+                loop
+                playsinline
+                class="demo-video"
+            />
+        )}
+
+        <div class="project-meta">
+            {link && (
+                <a href={link} target="_blank" rel="noopener noreferrer" class="visit-btn">
+                    <span>Visit project</span>
+                    <span class="arr">↗</span>
+                </a>
+            )}
+
+            {technologies && technologies.length > 0 && (
+                <div class="tech-list">
+                    <span class="tech-label">Stack</span>
+                    <div class="tech-tags">
+                        {technologies.map((tech) => (
+                            <span class="tech">{tech}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
-    )}
 
-    <!-- MDX content -->
-    <div class="prose prose-invert prose-lg max-w-none">
-        <Content />
+        <div class="prose prose-invert prose-lg max-w-none project-prose">
+            <Content />
+        </div>
     </div>
 </PageLayout>
+
+<style>
+    .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.2s ease;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link .arr { transition: transform 0.2s ease; }
+    .back-link:hover .arr { transform: translateX(-3px); }
+
+    .project-hero {
+        width: 100%;
+        margin-bottom: 3rem;
+        border: 1px solid var(--rule);
+        filter: saturate(0.95);
+    }
+
+    .page-header {
+        margin-bottom: 2rem;
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.25rem, 5vw, 4rem);
+        letter-spacing: -0.035em;
+        line-height: 0.98;
+        color: var(--ink);
+        margin: 0 0 1.25rem;
+    }
+    .page-lead {
+        font-family: var(--font-sans);
+        font-size: 1.25rem;
+        color: var(--ink-dim);
+        line-height: 1.5;
+        max-width: 56ch;
+        margin: 0;
+    }
+
+    .demo-video {
+        width: 100%;
+        margin: 2.5rem 0;
+        border: 1px solid var(--rule);
+    }
+
+    .project-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 0;
+        margin: 2.5rem 0;
+        border-top: 1px solid var(--rule-strong);
+        border-bottom: 1px solid var(--rule-strong);
+    }
+    .visit-btn {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--gold);
+        color: var(--paper);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .visit-btn:hover { background: var(--gold-warm); transform: translateY(-1px); }
+    .visit-btn .arr { transition: transform 0.2s ease; }
+    .visit-btn:hover .arr { transform: translate(2px, -2px); }
+
+    .tech-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .tech-label {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+    }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        padding: 0.3rem 0.6rem;
+        border: 1px solid rgba(230, 181, 74, 0.3);
+    }
+
+    .project-prose {
+        font-family: var(--font-sans);
+    }
+</style>

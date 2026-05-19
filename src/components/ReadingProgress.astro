@@ -1,28 +1,37 @@
 ---
-// No props needed - this component tracks scroll position
 ---
 
-<div class="fixed top-0 left-0 right-0 h-1 z-50">
-    <div
-        id="reading-progress"
-        class="h-full bg-gradient-to-r from-[#1F5ABD] to-[#8910A8] transition-all duration-150 ease-out"
-        style="width: 0%"
-    ></div>
+<div class="reading-progress-track">
+    <div id="reading-progress" class="reading-progress-bar"></div>
 </div>
 
+<style>
+    .reading-progress-track {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        z-index: 60;
+        pointer-events: none;
+    }
+    .reading-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--gold);
+        transition: width 0.15s ease-out;
+    }
+</style>
+
 <script is:inline>
-    // Track scroll position and update progress bar
     const progressBar = document.getElementById('reading-progress');
 
     function updateProgress() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progressBar.style.width = `${Math.min(progress, 100)}%`;
+        if (progressBar) progressBar.style.width = `${Math.min(progress, 100)}%`;
     }
 
     window.addEventListener('scroll', updateProgress);
     window.addEventListener('resize', updateProgress);
-    // Initial call to set progress on page load
     updateProgress();
 </script>

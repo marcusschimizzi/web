@@ -13,31 +13,51 @@ const { headings } = Astro.props;
 ---
 
 {headings.length > 0 && (
-    <aside class="mb-8 p-4 rounded-lg border border-gray-800 bg-[#1a1a1a]">
-        <h2 class="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wide">
-            Table of Contents
-        </h2>
+    <aside class="toc">
+        <h2 class="toc-label">N° · Contents</h2>
         <nav>
-            <ul class="space-y-2">
+            <ul>
                 {headings.map((heading) => (
-                    <li class={
-                        heading.depth === 2
-                            ? ''
-                            : 'ml-4'
-                    }>
-                        <a
-                            href={`#${heading.slug}`}
-                            class={`text-sm ${
-                                heading.depth === 2
-                                    ? 'text-gray-300 hover:text-primary-400'
-                                    : 'text-gray-400 hover:text-primary-400'
-                            } transition-colors duration-200`}
-                        >
-                            {heading.text}
-                        </a>
+                    <li class={heading.depth === 2 ? '' : 'sub'}>
+                        <a href={`#${heading.slug}`}>{heading.text}</a>
                     </li>
                 ))}
             </ul>
         </nav>
     </aside>
 )}
+
+<style>
+    .toc {
+        margin-bottom: 2.5rem;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid var(--rule-strong);
+        background: var(--paper-raised);
+    }
+    .toc-label {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 0 0 1rem;
+        font-weight: 400;
+    }
+    .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .toc li.sub { padding-left: 1.25rem; }
+    .toc a {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        color: var(--ink-dim);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .toc a:hover { color: var(--gold); }
+</style>

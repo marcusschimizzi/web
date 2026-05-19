@@ -6,13 +6,31 @@ interface Props {
 const { tags } = Astro.props;
 ---
 
-<div class="flex flex-wrap gap-2">
+<div class="taglist">
     {tags.map((tag) => (
-        <a
-            href={`/tags/${tag}`}
-            class="bg-gray-800 text-primary-400 px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition-colors"
-        >
-            {tag}
-        </a>
+        <a href={`/tags/${tag}`} class="tag">{tag}</a>
     ))}
 </div>
+
+<style>
+    .taglist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        padding: 0.25rem 0.65rem;
+        border: 1px solid var(--rule-strong);
+        text-decoration: none;
+        transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .tag:hover {
+        color: var(--gold);
+        border-color: var(--gold);
+    }
+</style>

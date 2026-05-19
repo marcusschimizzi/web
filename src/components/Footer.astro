@@ -4,82 +4,192 @@ import { features } from '@/config';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-gray-800">
-  <div class="max-w-6xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-20 lg:gap-32">
-      <!-- Brand -->
-      <div class="md:max-w-xs shrink-0">
-        <a href="/">
-          <img src="/images/logo-gradient.svg" alt="Marcus Schimizzi" class="h-12 w-12" />
-        </a>
-        <h3 class="text-lg font-semibold mt-2 text-white">Marcus J. Schimizzi</h3>
-        <p class="text-gray-300">I'm a passionate software engineer specializing in web development and data visualization.</p>
-      </div>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <!-- Brand -->
+            <div class="brand">
+                <a href="/" class="brand-mark" aria-label="Home">
+                    <img src="/images/logo.svg" alt="" class="brand-logo" width="40" height="40" aria-hidden="true" />
+                    <span>Marcus&nbsp;Schimizzi</span>
+                </a>
+                <p class="brand-tagline">
+                    Software engineer building reliable things. Currently in Chicago, working on title automation at Qualia.
+                </p>
+            </div>
 
-      <!-- Link columns -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 flex-1">
-        <!-- Pages -->
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-4">Pages</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="/about" class="text-gray-300 hover:text-primary-400 transition-colors">About</a>
-            </li>
-            <li>
-              <a href="/projects" class="text-gray-300 hover:text-primary-400 transition-colors">Projects</a>
-            </li>
-            <li>
-              <a href="/experience" class="text-gray-300 hover:text-primary-400 transition-colors">Experience</a>
-            </li>
-            {features.blog && (
-            <li>
-              <a href="/blog" class="text-gray-300 hover:text-primary-400 transition-colors">Blog</a>
-            </li>
-            )}
-            <li>
-              <a href="/contact" class="text-gray-300 hover:text-primary-400 transition-colors">Contact</a>
-            </li>
-          </ul>
+            <!-- Link columns -->
+            <div class="footer-cols">
+                <div class="col">
+                    <h4 class="col-label">Index</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/projects">Work</a></li>
+                        <li><a href="/experience">Experience</a></li>
+                        {features.blog && (<li><a href="/blog">Writing</a></li>)}
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h4 class="col-label">More</h4>
+                    <ul>
+                        <li><a href="/now">Now</a></li>
+                        <li><a href="/uses">Uses</a></li>
+                        <li><a href="/docs/resume.pdf">Résumé</a></li>
+                        <li><a href="/colophon">Colophon</a></li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h4 class="col-label">Elsewhere</h4>
+                    <ul>
+                        <li><a href="https://github.com/marcusschimizzi" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                        <li><a href="https://linkedin.com/in/marcusschimizzi" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- More -->
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-4">More</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="/now" class="text-gray-300 hover:text-primary-400 transition-colors">Now</a>
-            </li>
-            <li>
-              <a href="/uses" class="text-gray-300 hover:text-primary-400 transition-colors">Uses</a>
-            </li>
-            <li>
-              <a href="/docs/resume.pdf" class="text-gray-300 hover:text-primary-400 transition-colors">Resume</a>
-            </li>
-            <li>
-              <a href="/colophon" class="text-gray-300 hover:text-primary-400 transition-colors">Colophon</a>
-            </li>
-          </ul>
+        <div class="footer-bottom">
+            <div class="left">
+                <span>© {currentYear} Marcus Schimizzi</span>
+                <span class="sep">·</span>
+                <span>Made in Chicago with ☕</span>
+            </div>
+            <div class="right">
+                Set in <a href="/colophon">Geist &amp; Instrument Serif</a>
+            </div>
         </div>
-
-        <!-- Connect -->
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-4">Connect</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="https://github.com/marcusschimizzi" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary-400 transition-colors">GitHub</a>
-            </li>
-            <li>
-              <a href="https://linkedin.com/in/marcusschimizzi" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-primary-400 transition-colors">LinkedIn</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-
-    <!-- Bottom bar -->
-    <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-      <p>Made by me with ❤️ and lots of ☕</p>
-      <p>&copy; {currentYear} Marcus Schimizzi. All rights reserved.</p>
-    </div>
-  </div>
 </footer>
+
+<style>
+    .site-footer {
+        border-top: 1px solid var(--rule);
+        margin-top: 4rem;
+    }
+    .footer-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 4rem clamp(1.25rem, 3vw, 3rem) 3rem;
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    @media (min-width: 800px) {
+        .footer-top {
+            grid-template-columns: 1.4fr 2fr;
+            gap: 4rem;
+        }
+    }
+
+    /* Brand */
+    .brand-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.85rem;
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: 0.875rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        margin-bottom: 1rem;
+    }
+    .brand-logo {
+        display: block;
+        width: 40px;
+        height: 40px;
+    }
+    .brand-tagline {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        line-height: 1.55;
+        color: var(--ink-dim);
+        max-width: 36ch;
+    }
+
+    /* Columns */
+    .footer-cols {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    @media (max-width: 480px) {
+        .footer-cols { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+    }
+    .col-label {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-bottom: 1rem;
+        font-weight: 400;
+    }
+    .col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .col a {
+        display: inline-block;
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        color: var(--ink);
+        text-decoration: none;
+        position: relative;
+        transition: color 0.2s ease;
+    }
+    .col a::after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0;
+        bottom: -2px;
+        height: 1px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s cubic-bezier(.2,.7,.2,1);
+    }
+    .col a:hover::after { transform: scaleX(1); }
+    .col a:hover { color: var(--gold); }
+
+    /* Bottom bar */
+    .footer-bottom {
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        color: var(--ink-dim);
+    }
+    .footer-bottom .left {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .footer-bottom .sep { color: var(--ink-faint); }
+    .footer-bottom a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 1px;
+        transition: color 0.2s ease;
+    }
+    .footer-bottom a:hover { color: var(--gold); }
+</style>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Logo options — black & gold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f4f1ea;
+  --ink-dim: #8a8580;
+  --ink-faint: #4a4742;
+  --paper: #050505;
+  --paper-raised: #0d0c0a;
+  --gold: #e6b54a;
+  --rule: rgba(244, 241, 234, 0.08);
+  --rule-strong: rgba(244, 241, 234, 0.16);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Geist', sans-serif;
+  padding: 4rem 3rem;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  letter-spacing: -0.035em;
+  margin-bottom: 0.5rem;
+}
+h1 em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.lede {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: start;
+  padding: 2.5rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+}
+
+.opt-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.opt-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.opt-name {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.opt-desc {
+  font-family: 'Geist', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  margin-top: 0.5rem;
+}
+
+.sizes {
+  display: flex;
+  align-items: flex-end;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.size .frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.size-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+/* Nav preview chip */
+.nav-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.nav-preview-text {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+</style>
+</head>
+<body>
+
+<h1>Logo <em>options.</em></h1>
+<p class="lede">Four directions — choose one to port</p>
+
+<div class="grid">
+
+  <!-- ─── OPTION 01 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 01</span>
+      <span class="opt-name">Gilded square</span>
+      <span class="opt-desc">Solid gold square with the lowercase serif italic "m" debossed into it. Smallest, most icon-like option — reads as a "stamp" or "seal." Carries the gold-dot brand cue from the nav into a richer mark.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <!-- 96px solid gold square with serif italic m cut out -->
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="m-mask-01">
+                <rect width="64" height="64" fill="white"/>
+                <text x="32" y="48" font-family="Instrument Serif" font-style="italic" font-size="56" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#m-mask-01)"/>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="m-mask-01b">
+                <rect width="64" height="64" fill="white"/>
+                <text x="32" y="48" font-family="Instrument Serif" font-style="italic" font-size="56" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#m-mask-01b)"/>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="m-mask-01c">
+                <rect width="64" height="64" fill="white"/>
+                <text x="32" y="48" font-family="Instrument Serif" font-style="italic" font-size="56" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#m-mask-01c)"/>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="m-mask-01d">
+                <rect width="64" height="64" fill="white"/>
+                <text x="32" y="48" font-family="Instrument Serif" font-style="italic" font-size="56" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#m-mask-01d)"/>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="m-mask-01e">
+                <rect width="64" height="64" fill="white"/>
+                <text x="32" y="48" font-family="Instrument Serif" font-style="italic" font-size="56" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#m-mask-01e)"/>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 02 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 02</span>
+      <span class="opt-name">Slab "M"</span>
+      <span class="opt-desc">Heavy slab-serif uppercase "M" in gold, framed in a thin gold outline square. Most "logotype-traditional" — confident, holds up at any size, reads as a brand mark.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <path d="M14 17 L14 47 L19 47 L19 27 L31 47 L33 47 L45 27 L45 47 L50 47 L50 17 L44 17 L32 38 L20 17 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <path d="M14 17 L14 47 L19 47 L19 27 L31 47 L33 47 L45 27 L45 47 L50 47 L50 17 L44 17 L32 38 L20 17 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <path d="M14 17 L14 47 L19 47 L19 27 L31 47 L33 47 L45 27 L45 47 L50 47 L50 17 L44 17 L32 38 L20 17 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <path d="M14 17 L14 47 L19 47 L19 27 L31 47 L33 47 L45 27 L45 47 L50 47 L50 17 L44 17 L32 38 L20 17 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="18" height="18" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <path d="M14 17 L14 47 L19 47 L19 27 L31 47 L33 47 L45 27 L45 47 L50 47 L50 17 L44 17 L32 38 L20 17 Z" fill="#e6b54a"/>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 03 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 03</span>
+      <span class="opt-name">MJS monogram</span>
+      <span class="opt-desc">Stacked "M·J·S" monogram in gold mono caps, set inside a thin gold frame. Editorial / atelier feel — like a press stamp or studio mark. Most "personal" because it carries the J initial.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <line x1="6" y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="50" y1="32" x2="58" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="22" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">M</text>
+            <text x="32" y="37" font-family="Instrument Serif" font-style="italic" font-weight="400" font-size="16" text-anchor="middle" fill="#e6b54a">j</text>
+            <text x="32" y="52" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">S</text>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <line x1="6" y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="50" y1="32" x2="58" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="22" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">M</text>
+            <text x="32" y="37" font-family="Instrument Serif" font-style="italic" font-weight="400" font-size="16" text-anchor="middle" fill="#e6b54a">j</text>
+            <text x="32" y="52" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">S</text>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <line x1="6" y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="50" y1="32" x2="58" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="22" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">M</text>
+            <text x="32" y="37" font-family="Instrument Serif" font-style="italic" font-weight="400" font-size="16" text-anchor="middle" fill="#e6b54a">j</text>
+            <text x="32" y="52" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">S</text>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <line x1="6" y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="50" y1="32" x2="58" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="22" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">M</text>
+            <text x="32" y="37" font-family="Instrument Serif" font-style="italic" font-weight="400" font-size="16" text-anchor="middle" fill="#e6b54a">j</text>
+            <text x="32" y="52" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">S</text>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="18" height="18" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="#e6b54a" stroke-width="2"/>
+            <line x1="6" y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="50" y1="32" x2="58" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="22" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">M</text>
+            <text x="32" y="37" font-family="Instrument Serif" font-style="italic" font-weight="400" font-size="16" text-anchor="middle" fill="#e6b54a">j</text>
+            <text x="32" y="52" font-family="Geist" font-weight="600" font-size="13" letter-spacing="2" text-anchor="middle" fill="#e6b54a">S</text>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 04 ───────────────────────────────── -->
+  <div class="option" id="opt-04">
+    <div class="opt-label">
+      <span class="opt-num">N° 04</span>
+      <span class="opt-name">Signet seal</span>
+      <span class="opt-desc">Circular gold seal with serif italic "m" centered. Tiny notched marks at compass points like a watchface or signet ring. Most "luxe object" — pulls the brand toward editorial/atelier territory.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="#e6b54a" stroke-width="1.5"/>
+            <circle cx="32" cy="32" r="25" fill="none" stroke="#e6b54a" stroke-width="0.5" opacity="0.5"/>
+            <!-- compass notches -->
+            <line x1="32" y1="2"  x2="32" y2="6"  stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="58" x2="32" y2="62" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="2"  y1="32" x2="6"  y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="58" y1="32" x2="62" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="46" font-family="Instrument Serif" font-style="italic" font-size="38" font-weight="400" text-anchor="middle" fill="#e6b54a">m</text>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="#e6b54a" stroke-width="1.5"/>
+            <circle cx="32" cy="32" r="25" fill="none" stroke="#e6b54a" stroke-width="0.5" opacity="0.5"/>
+            <line x1="32" y1="2"  x2="32" y2="6"  stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="58" x2="32" y2="62" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="2"  y1="32" x2="6"  y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="58" y1="32" x2="62" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="46" font-family="Instrument Serif" font-style="italic" font-size="38" font-weight="400" text-anchor="middle" fill="#e6b54a">m</text>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="#e6b54a" stroke-width="1.5"/>
+            <circle cx="32" cy="32" r="25" fill="none" stroke="#e6b54a" stroke-width="0.5" opacity="0.5"/>
+            <line x1="32" y1="2"  x2="32" y2="6"  stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="58" x2="32" y2="62" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="2"  y1="32" x2="6"  y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="58" y1="32" x2="62" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="46" font-family="Instrument Serif" font-style="italic" font-size="38" font-weight="400" text-anchor="middle" fill="#e6b54a">m</text>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="2"  x2="32" y2="6"  stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="58" x2="32" y2="62" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="2"  y1="32" x2="6"  y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="58" y1="32" x2="62" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="46" font-family="Instrument Serif" font-style="italic" font-size="38" font-weight="400" text-anchor="middle" fill="#e6b54a">m</text>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="18" height="18" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="2"  x2="32" y2="6"  stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="32" y1="58" x2="32" y2="62" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="2"  y1="32" x2="6"  y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="58" y1="32" x2="62" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="32" y="46" font-family="Instrument Serif" font-style="italic" font-size="38" font-weight="400" text-anchor="middle" fill="#e6b54a">m</text>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 05 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 05</span>
+      <span class="opt-name">Unframed "M"</span>
+      <span class="opt-desc">Bold geometric uppercase M in gold, no frame — pure letterform. The strongest silhouette in the set. Lets the letter do the work; the most "wordmark" of the bunch.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <!-- bold geometric M, generous stroke -->
+            <path d="M8 56 L8 8 L17 8 L32 36 L47 8 L56 8 L56 56 L48 56 L48 22 L35 46 L29 46 L16 22 L16 56 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 56 L8 8 L17 8 L32 36 L47 8 L56 8 L56 56 L48 56 L48 22 L35 46 L29 46 L16 22 L16 56 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 56 L8 8 L17 8 L32 36 L47 8 L56 8 L56 56 L48 56 L48 22 L35 46 L29 46 L16 22 L16 56 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 56 L8 8 L17 8 L32 36 L47 8 L56 8 L56 56 L48 56 L48 22 L35 46 L29 46 L16 22 L16 56 Z" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 56 L8 8 L17 8 L32 36 L47 8 L56 8 L56 56 L48 56 L48 22 L35 46 L29 46 L16 22 L16 56 Z" fill="#e6b54a"/>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 06 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 06</span>
+      <span class="opt-name">Gold diamond</span>
+      <span class="opt-desc">Solid gold rhombus (rotated square) with serif italic "m" knocked out. Gemstone / cut-jewel reference — different frame shape from the rest of the set, distinctive at a glance.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="dia-mask-06">
+                <rect width="64" height="64" fill="black"/>
+                <polygon points="32,4 60,32 32,60 4,32" fill="white"/>
+                <text x="32" y="42" font-family="Instrument Serif" font-style="italic" font-size="32" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#dia-mask-06)"/>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="dia-mask-06b">
+                <rect width="64" height="64" fill="black"/>
+                <polygon points="32,4 60,32 32,60 4,32" fill="white"/>
+                <text x="32" y="42" font-family="Instrument Serif" font-style="italic" font-size="32" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#dia-mask-06b)"/>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="dia-mask-06c">
+                <rect width="64" height="64" fill="black"/>
+                <polygon points="32,4 60,32 32,60 4,32" fill="white"/>
+                <text x="32" y="42" font-family="Instrument Serif" font-style="italic" font-size="32" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#dia-mask-06c)"/>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="32,4 60,32 32,60 4,32" fill="#e6b54a"/>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <mask id="dia-mask-06d">
+                <rect width="64" height="64" fill="black"/>
+                <polygon points="32,4 60,32 32,60 4,32" fill="white"/>
+                <text x="32" y="42" font-family="Instrument Serif" font-style="italic" font-size="32" font-weight="400" text-anchor="middle" fill="black">m</text>
+              </mask>
+            </defs>
+            <rect width="64" height="64" fill="#e6b54a" mask="url(#dia-mask-06d)"/>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 07 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 07</span>
+      <span class="opt-name">Bracketed "MS"</span>
+      <span class="opt-desc">Two sans caps "M S" flanked by hairline gold rules — like a press masthead or runner header. No surrounding shape — the typography is the mark. Most editorial of the set.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="120" height="96" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4"  y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="66" y1="32" x2="76" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="40" y="42" font-family="Geist" font-weight="600" font-size="26" letter-spacing="4" text-anchor="middle" fill="#e6b54a">MS</text>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="60" height="48" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4"  y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="66" y1="32" x2="76" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="40" y="42" font-family="Geist" font-weight="600" font-size="26" letter-spacing="4" text-anchor="middle" fill="#e6b54a">MS</text>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="40" height="32" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4"  y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <line x1="66" y1="32" x2="76" y2="32" stroke="#e6b54a" stroke-width="1.5"/>
+            <text x="40" y="42" font-family="Geist" font-weight="600" font-size="26" letter-spacing="4" text-anchor="middle" fill="#e6b54a">MS</text>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="20" height="16" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+            <text x="40" y="46" font-family="Geist" font-weight="700" font-size="36" letter-spacing="2" text-anchor="middle" fill="#e6b54a">MS</text>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon, hairlines dropped)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="22" height="18" viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4"  y1="32" x2="14" y2="32" stroke="#e6b54a" stroke-width="2"/>
+            <line x1="66" y1="32" x2="76" y2="32" stroke="#e6b54a" stroke-width="2"/>
+            <text x="40" y="44" font-family="Geist" font-weight="600" font-size="30" letter-spacing="3" text-anchor="middle" fill="#e6b54a">MS</text>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OPTION 08 ───────────────────────────────── -->
+  <div class="option">
+    <div class="opt-label">
+      <span class="opt-num">N° 08</span>
+      <span class="opt-name">Asterism ✱</span>
+      <span class="opt-desc">A typographic ornament — six-petal asterisk in gold. No letter at all. Pure ornamentation, like the printer's dingbat that historically separated articles. Most unconventional choice; pairs with the existing gold-dot motif.</span>
+    </div>
+    <div class="sizes">
+      <div class="size">
+        <div class="frame">
+          <svg width="96" height="96" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#e6b54a">
+              <!-- 6-pointed star drawn from 6 narrow petals at 60-degree intervals -->
+              <g transform="translate(32 32)">
+                <g>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" />
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(60)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(120)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(180)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(240)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(300)"/>
+                </g>
+                <circle r="2.5"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span class="size-label">96px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#e6b54a">
+              <g transform="translate(32 32)">
+                <g>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" />
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(60)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(120)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(180)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(240)"/>
+                  <path d="M -2 -26 L 0 -28 L 2 -26 L 1 -4 L 0 -2 L -1 -4 Z" transform="rotate(300)"/>
+                </g>
+                <circle r="2.5"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span class="size-label">48px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#e6b54a">
+              <g transform="translate(32 32)">
+                <g>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" />
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(60)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(120)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(180)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(240)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(300)"/>
+                </g>
+                <circle r="3"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span class="size-label">32px</span>
+      </div>
+      <div class="size">
+        <div class="frame">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#e6b54a">
+              <g transform="translate(32 32)">
+                <g>
+                  <path d="M -5 -25 L 0 -28 L 5 -25 L 3 -3 L 0 0 L -3 -3 Z" />
+                  <path d="M -5 -25 L 0 -28 L 5 -25 L 3 -3 L 0 0 L -3 -3 Z" transform="rotate(60)"/>
+                  <path d="M -5 -25 L 0 -28 L 5 -25 L 3 -3 L 0 0 L -3 -3 Z" transform="rotate(120)"/>
+                  <path d="M -5 -25 L 0 -28 L 5 -25 L 3 -3 L 0 0 L -3 -3 Z" transform="rotate(180)"/>
+                  <path d="M -5 -25 L 0 -28 L 5 -25 L 3 -3 L 0 0 L -3 -3 Z" transform="rotate(240)"/>
+                  <path d="M -5 -25 L 0 -28 L 5 -25 L 3 -3 L 0 0 L -3 -3 Z" transform="rotate(300)"/>
+                </g>
+                <circle r="5"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span class="size-label">16px (favicon)</span>
+      </div>
+      <div class="size">
+        <div class="nav-preview">
+          <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#e6b54a">
+              <g transform="translate(32 32)">
+                <g>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" />
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(60)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(120)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(180)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(240)"/>
+                  <path d="M -3 -26 L 0 -28 L 3 -26 L 1.5 -4 L 0 -2 L -1.5 -4 Z" transform="rotate(300)"/>
+                </g>
+                <circle r="3"/>
+              </g>
+            </g>
+          </svg>
+          <span class="nav-preview-text">Marcus&nbsp;Schimizzi</span>
+        </div>
+        <span class="size-label">In nav</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

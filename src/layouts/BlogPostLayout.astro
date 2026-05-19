@@ -27,47 +27,122 @@ const publishedTime = pubDate.toISOString();
 ---
 
 <PageLayout
-     title={title}
-     description={description}
-     image={typeof heroImage === 'string' ? heroImage : undefined}
-     type="article"
-     {publishedTime}
-     {tags}
- >
+    title={title}
+    description={description}
+    image={typeof heroImage === 'string' ? heroImage : undefined}
+    type="article"
+    {publishedTime}
+    {tags}
+>
     <ReadingProgress />
-    <article class="max-w-3xl mx-auto">
-         {heroImage && (
-             typeof heroImage === 'string' ? (
-                 <img
-                     src={heroImage}
-                     alt={title}
-                     class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-                 />
-             ) : (
-                 <Image
-                     src={heroImage}
-                     alt={title}
-                     width={800}
-                     height={400}
-                     class="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-                 />
-             )
-         )}
-        <TableOfContents {headings} />
-        <header class="mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-100">{title}</h1>
-            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
+    <article class="blog-article">
+        {heroImage && (
+            typeof heroImage === 'string' ? (
+                <img src={heroImage} alt={title} class="hero-img" />
+            ) : (
+                <Image
+                    src={heroImage}
+                    alt={title}
+                    width={1200}
+                    height={600}
+                    class="hero-img"
+                />
+            )
+        )}
+
+        <header class="article-header">
+            <span class="section-num">N° · Essay</span>
+            <h1 class="article-title">{title}</h1>
+            <div class="article-meta">
                 <time>{formattedDate}</time>
-                <span class="text-primary-400">{readingTime}</span>
+                <span class="sep">·</span>
+                <span class="read-time">{readingTime}</span>
             </div>
             <TagList tags={tags} />
         </header>
-        <div class="prose prose-invert prose-lg max-w-none">
+
+        <TableOfContents {headings} />
+
+        <div class="prose prose-invert prose-lg max-w-none article-prose">
             <slot />
         </div>
-        <footer class="mt-12 pt-8 border-t border-gray-800">
-            <h3 class="text-sm font-semibold text-gray-400 mb-3">Tags</h3>
+
+        <footer class="article-footer">
+            <span class="footer-label">Tagged</span>
             <TagList tags={tags} />
         </footer>
     </article>
 </PageLayout>
+
+<style>
+    .blog-article {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .hero-img {
+        width: 100%;
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        margin-bottom: 3rem;
+        border: 1px solid var(--rule);
+        filter: saturate(0.95);
+    }
+    .article-header {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .article-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+        letter-spacing: -0.035em;
+        line-height: 1.0;
+        color: var(--ink);
+        margin: 0 0 1.5rem;
+    }
+    .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-dim);
+        margin-bottom: 1.25rem;
+    }
+    .article-meta .sep { color: var(--ink-faint); }
+    .article-meta .read-time { color: var(--gold); }
+
+    .article-prose {
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        line-height: 1.7;
+    }
+
+    .article-footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--rule);
+    }
+    .footer-label {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-bottom: 1rem;
+    }
+</style>

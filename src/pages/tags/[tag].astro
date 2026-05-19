@@ -33,19 +33,20 @@ const posts = allPosts
     title={`Posts tagged '${tag}' | Marcus Schimizzi`}
     description={`All blog posts tagged with ${tag}`}
 >
-    <div class="max-w-3xl mx-auto">
-        <a
-            href="/blog"
-            class="inline-flex items-center text-gray-400 hover:text-primary-400 transition-colors mb-8 group"
-        >
-            <span class="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span>
-            Back to Blog
+    <div class="page tag-page">
+        <a href="/blog" class="back-link">
+            <span class="arr">←</span>
+            <span>Back to writing</span>
         </a>
-        <h1 class="text-5xl font-bold mb-12 text-gray-100">Posts tagged '{tag}'</h1>
+        <header class="page-header">
+            <span class="section-num">N° · Tag</span>
+            <h1 class="page-title">Posts tagged <em>"{tag}"</em></h1>
+        </header>
+
         {posts.length === 0 ? (
-            <p class="text-gray-400 text-lg">No posts found with this tag.</p>
+            <p class="empty">No posts found with this tag.</p>
         ) : (
-            <div class="space-y-6">
+            <div class="posts">
                 {posts.map((post) => (
                     <BlogPostCard
                         title={post.data.title}
@@ -60,3 +61,65 @@ const posts = allPosts
         )}
     </div>
 </PageLayout>
+
+<style>
+    .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.2s ease;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link .arr { transition: transform 0.2s ease; }
+    .back-link:hover .arr { transform: translateX(-3px); }
+
+    .page-header {
+        padding-bottom: 3rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        letter-spacing: -0.035em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin: 0;
+    }
+    .page-title em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+        letter-spacing: -0.015em;
+    }
+    .empty {
+        font-family: var(--font-sans);
+        font-size: 1.125rem;
+        color: var(--ink-dim);
+        padding: 2rem 0;
+    }
+    .posts { display: flex; flex-direction: column; }
+</style>

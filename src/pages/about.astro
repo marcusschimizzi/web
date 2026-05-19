@@ -6,93 +6,256 @@ import { features } from '@/config';
 ---
 
 <PageLayout title="About | Marcus Schimizzi" description="Hi there! My name is Marcus. I'm a software engineer at Qualia working to make real estate transactions easier and more efficient.">
-    <!-- Intro: portrait + bio -->
-    <div class="flex flex-col lg:flex-row gap-8 items-start">
-        <Image
-            src={portraitImage}
-            alt="Marcus Schimizzi"
-            class="w-64 lg:w-96 aspect-square object-cover border-4 border-primary-500 rounded-md"
-        />
-        <div class="flex-1 space-y-4">
-            <h2 class="text-3xl font-bold">Who am I?</h2>
-            <p>Hi there! My name is Marcus.</p>
-            <p>I'm currently employed as a software engineer at Qualia working to make real estate transactions easier and more efficient.</p>
-            <p>Outside of building software, I love to spend time traveling, reading (mostly nonfiction and biographies), worrying too much about my favorite sports teams, and cooking.</p>
-            <a
-                href="/docs/resume.pdf"
-                class="inline-block mt-4 px-6 py-3 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors"
-            >
-                Download Resume
-            </a>
-        </div>
-    </div>
+    <div class="page about">
+        <header class="page-header">
+            <span class="section-num">N° · About</span>
+            <h1 class="page-title">Who am I?</h1>
+        </header>
 
-    <!-- What I do -->
-    <section class="mt-16 pt-10 border-t border-gray-800">
-        <h2 class="text-2xl font-bold mb-4">What I do</h2>
-        <div class="space-y-3 text-gray-300 max-w-2xl">
-            <p>
-                At <strong class="text-white">Qualia</strong>, I build systems that automate real estate title searches and exams on the Search &amp; Exam team — full-stack work spanning React, TypeScript, web scraping, and multi-agent orchestration.
-            </p>
-            <p>
-                Before Qualia, I spent nearly five years at <strong class="text-white">Qualtrics</strong> on the Data Visualization team, shipping features for the XM Platform with React, TypeScript, D3, and Golang. I also interned at <strong class="text-white">Ford</strong> building a gamified training app, and freelanced throughout college — building sites and small web apps for local businesses.
-            </p>
-        </div>
-    </section>
+        <!-- Intro: portrait + bio -->
+        <section class="about-intro">
+            <Image
+                src={portraitImage}
+                alt="Marcus Schimizzi"
+                class="portrait"
+            />
+            <div class="bio">
+                <p>Hi there! My name is Marcus.</p>
+                <p>I'm currently employed as a software engineer at <strong>Qualia</strong> working to make real estate transactions easier and more efficient.</p>
+                <p>Outside of building software, I love to spend time traveling, reading (mostly nonfiction and biographies), worrying too much about my favorite sports teams, and cooking.</p>
+                <a href="/docs/resume.pdf" class="btn-primary">Download résumé →</a>
+            </div>
+        </section>
 
-    <!-- How I work -->
-    <section class="mt-12 pt-10 border-t border-gray-800">
-        <h2 class="text-2xl font-bold mb-4">How I work</h2>
-        <div class="space-y-3 text-gray-300 max-w-2xl">
-            <p>
-                I care about fast page loads, clean interfaces, and code that's easy to come back to six months later. I'd rather ship something simple that works well than something clever that's hard to maintain.
-            </p>
-            <p>
-                Above all, I try to approach things with curiosity first. I find it's important not to assume I know everything about a particular project, codebase, or solution. With LLMs changing how we build software, I've leaned into rapid experimentation — what used to be "let's decide the right path up front" is now "I've tried three different approaches today and here's why this one wins." I think that shift is a sea change in software engineering, and I've tried to embrace it wholeheartedly.
-            </p>
-        </div>
-    </section>
+        <section class="about-block">
+            <span class="section-num">N° 01 — What I do</span>
+            <div class="block-body">
+                <p>
+                    At <strong>Qualia</strong>, I build systems that automate real estate title searches and exams on the Search &amp; Exam team — full-stack work spanning React, TypeScript, web scraping, and multi-agent orchestration.
+                </p>
+                <p>
+                    Before Qualia, I spent nearly five years at <strong>Qualtrics</strong> on the Data Visualization team, shipping features for the XM Platform with React, TypeScript, D3, and Golang. I also interned at <strong>Ford</strong> building a gamified training app, and freelanced throughout college — building sites and small web apps for local businesses.
+                </p>
+            </div>
+        </section>
 
-    <!-- Personal -->
-    <section class="mt-12 pt-10 border-t border-gray-800">
-        <h2 class="text-2xl font-bold mb-4">Outside of work</h2>
-        <div class="space-y-3 text-gray-300 max-w-2xl">
-            <p>
-                I'm a <strong class="text-white">Notre Dame</strong> alum (BSE in Computer Science, class of 2019) living in <strong class="text-white">Chicago</strong>. During college I spent a semester studying abroad in London, which remains one of my favorite cities.
-            </p>
-            <p>
-                My heritage on my father's side is Italian, and that's my first love of cuisine — it's what I cook most often and what I'd seek out first when dining out. I've been lucky enough to spend time in Greece sailing the Mediterranean on a catamaran and a month living in Siracusa, Sicily, where the pizza and pasta were everything you'd hope for.
-            </p>
-            <p>
-                I read a mix of fiction and nonfiction — a few favorites are <em>Slaughterhouse-Five</em>, <em>Klara and the Sun</em>, and <em>Moonwalking with Einstein</em>. And I worry far too much about my beloved Pittsburgh teams — the <strong class="text-white">Steelers</strong>, <strong class="text-white">Penguins</strong>, and <strong class="text-white">Pirates</strong>. I also picked up an allegiance to the <strong class="text-white">Mariners</strong> during my five years in Seattle, and of course the <strong class="text-white">Notre Dame Fighting Irish</strong>.
-            </p>
-        </div>
-    </section>
+        <section class="about-block">
+            <span class="section-num">N° 02 — How I work</span>
+            <div class="block-body">
+                <p>
+                    I care about fast page loads, clean interfaces, and code that's easy to come back to six months later. I'd rather ship something simple that works well than something clever that's hard to maintain.
+                </p>
+                <p>
+                    Above all, I try to approach things with curiosity first. I find it's important not to assume I know everything about a particular project, codebase, or solution. With LLMs changing how we build software, I've leaned into <em>rapid experimentation</em> — what used to be "let's decide the right path up front" is now "I've tried three different approaches today and here's why this one wins." I think that shift is a sea change in software engineering, and I've tried to embrace it wholeheartedly.
+                </p>
+            </div>
+        </section>
 
-    <!-- Now & Uses bridge -->
-    <section class="mt-12 pt-10 border-t border-gray-800">
-        <p class="text-gray-300">
-            Check out more about what I'm up to <a href="/now" class="text-primary-400 hover:text-primary-300 transition-colors">now</a> and the different things I like to <a href="/uses" class="text-primary-400 hover:text-primary-300 transition-colors">use</a>.
-        </p>
-    </section>
+        <section class="about-block">
+            <span class="section-num">N° 03 — Outside of work</span>
+            <div class="block-body">
+                <p>
+                    I'm a <strong>Notre Dame</strong> alum (BSE in Computer Science, class of 2019) living in <strong>Chicago</strong>. During college I spent a semester studying abroad in London, which remains one of my favorite cities.
+                </p>
+                <p>
+                    My heritage on my father's side is Italian, and that's my first love of cuisine — it's what I cook most often and what I'd seek out first when dining out. I've been lucky enough to spend time in Greece sailing the Mediterranean on a catamaran and a month living in Siracusa, Sicily, where the pizza and pasta were everything you'd hope for.
+                </p>
+                <p>
+                    I read a mix of fiction and nonfiction — a few favorites are <em>Slaughterhouse-Five</em>, <em>Klara and the Sun</em>, and <em>Moonwalking with Einstein</em>. And I worry far too much about my beloved Pittsburgh teams — the <strong>Steelers</strong>, <strong>Penguins</strong>, and <strong>Pirates</strong>. I also picked up an allegiance to the <strong>Mariners</strong> during my five years in Seattle, and of course the <strong>Notre Dame Fighting Irish</strong>.
+                </p>
+            </div>
+        </section>
 
-    <!-- Cross-links -->
-    <section class="mt-12 pt-10 border-t border-gray-800">
-        <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/projects" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
-                <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">See what I've built</p>
-                <p class="text-sm text-gray-400 mt-1">Projects &rarr;</p>
+        <section class="about-block">
+            <p class="bridge">
+                Check out more about what I'm up to <a href="/now">now</a> and the different things I like to <a href="/uses">use</a>.
+            </p>
+        </section>
+
+        <!-- Cross-links -->
+        <section class="cross-links">
+            <a href="/projects" class="cross-link">
+                <span class="cross-num">→ 01</span>
+                <span class="cross-label">See what I've built</span>
+                <span class="cross-sub">Projects</span>
             </a>
             {features.blog && (
-            <a href="/blog" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
-                <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">Read my thoughts</p>
-                <p class="text-sm text-gray-400 mt-1">Blog &rarr;</p>
-            </a>
+                <a href="/blog" class="cross-link">
+                    <span class="cross-num">→ 02</span>
+                    <span class="cross-label">Read my thoughts</span>
+                    <span class="cross-sub">Writing</span>
+                </a>
             )}
-            <a href="/experience" class="flex-1 bg-gray-900/50 rounded-lg p-5 border border-gray-800 hover:border-primary-500/50 transition-colors group text-center no-underline">
-                <p class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">Where I've worked</p>
-                <p class="text-sm text-gray-400 mt-1">Experience &rarr;</p>
+            <a href="/experience" class="cross-link">
+                <span class="cross-num">→ 03</span>
+                <span class="cross-label">Where I've worked</span>
+                <span class="cross-sub">Experience</span>
             </a>
-        </div>
-    </section>
+        </section>
+    </div>
 </PageLayout>
+
+<style>
+    .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .page-header {
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        letter-spacing: -0.035em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin: 0;
+    }
+
+    .about-intro {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 5rem;
+        align-items: start;
+    }
+    @media (min-width: 800px) {
+        .about-intro { grid-template-columns: 1fr 2fr; gap: 3rem; }
+    }
+    .portrait {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        max-width: 320px;
+        object-fit: cover;
+        border: 1px solid var(--rule-strong);
+        filter: saturate(0.9);
+    }
+    .bio {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        color: var(--ink);
+    }
+    .bio strong { color: var(--ink); font-weight: 500; }
+    .btn-primary {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--gold);
+        color: var(--paper);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .btn-primary:hover { background: var(--gold-warm); transform: translateY(-1px); }
+
+    .about-block {
+        margin-top: 4rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--rule);
+    }
+    .about-block .section-num { margin-bottom: 1.5rem; }
+    .block-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        color: var(--ink);
+        max-width: 60ch;
+    }
+    .block-body strong { color: var(--ink); font-weight: 500; }
+    .block-body em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        color: var(--gold);
+        font-size: 1.05em;
+    }
+
+    .bridge {
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        color: var(--ink-dim);
+    }
+    .bridge a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 1px;
+        transition: color 0.3s ease;
+    }
+    .bridge a:hover { color: var(--gold); }
+
+    .cross-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 5rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--rule);
+    }
+    @media (min-width: 700px) {
+        .cross-links { grid-template-columns: repeat(3, 1fr); }
+    }
+    .cross-link {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 2rem 1.5rem;
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--rule);
+        transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .cross-link:hover {
+        border-color: var(--gold);
+        transform: translateY(-2px);
+    }
+    .cross-num {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+    }
+    .cross-label {
+        font-family: var(--font-sans);
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: -0.015em;
+        color: var(--ink);
+        transition: color 0.2s ease;
+    }
+    .cross-link:hover .cross-label { color: var(--gold); }
+    .cross-sub {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        margin-top: 0.5rem;
+    }
+</style>
