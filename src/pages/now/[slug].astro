@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@layouts/PageLayout.astro';
+import NowEntry from '@components/NowEntry.astro';
+
+export async function getStaticPaths() {
+    const entries = await getCollection('now');
+    return entries.map((entry) => ({
+        params: { slug: entry.id },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const monthYear = entry.data.pubDate.toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+});
+---
+
+<PageLayout
+    title={`Now · ${monthYear} | Marcus Schimizzi`}
+    description={`What I was up to in ${monthYear}.`}
+>
+    <div class="page now">
+        <header class="page-header">
+            <span class="section-num">N° · Now / Archive</span>
+            <h1 class="page-title">{monthYear}</h1>
+            <p class="page-aside"><a href="/now">← back to current</a></p>
+        </header>
+
+        <NowEntry entry={entry} />
+    </div>
+</PageLayout>
+
+<style>
+    .page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 0 4rem;
+    }
+    .page-header {
+        padding-bottom: 3rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+    .page-title {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        letter-spacing: -0.035em;
+        line-height: 0.95;
+        color: var(--ink);
+        margin: 0 0 1rem;
+    }
+    .page-aside {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--ink-dim);
+        letter-spacing: 0.04em;
+        margin: 0;
+    }
+    .page-aside a {
+        color: var(--ink-dim);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .page-aside a:hover { color: var(--gold); }
+</style>
