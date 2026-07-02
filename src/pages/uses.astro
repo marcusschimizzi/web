@@ -57,7 +57,7 @@ const sections = [
 <PageLayout title="Uses | Marcus Schimizzi" description="A list of the tools, hardware, and software I use daily as a software engineer.">
     <div class="page uses">
         <header class="page-header">
-            <span class="section-num">N° · Uses</span>
+            <span class="section-num">Uses</span>
             <h1 class="page-title">Tools of the <em>trade.</em></h1>
             <p class="page-lead">
                 A running list of the tools, hardware, and software I use daily. Inspired by the <a href="https://uses.tech">uses.tech</a> convention.
@@ -66,7 +66,7 @@ const sections = [
 
         {sections.map((section) => (
             <section class="uses-section">
-                <span class="section-num">N° {section.num} — {section.title}</span>
+                <span class="section-num">{section.title}</span>
                 <dl class="uses-list">
                     {section.items.map((item) => (
                         <div class="uses-item">
@@ -137,6 +137,12 @@ const sections = [
         margin-top: 4rem;
         padding-top: 3rem;
         border-top: 1px solid var(--rule);
+    }
+    /* The page-header already draws a rule; don't stack a second one around empty space */
+    .uses-section:first-of-type {
+        margin-top: 2.5rem;
+        padding-top: 0;
+        border-top: none;
     }
     .uses-section .section-num { margin-bottom: 1.75rem; }
     .uses-list {

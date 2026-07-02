@@ -11,7 +11,7 @@ const projects = (await getCollection('projects')).sort(
 <PageLayout title="Projects | Marcus Schimizzi" description="A collection of web development projects I've built.">
     <div class="page projects">
         <header class="page-header">
-            <span class="section-num">N° · Projects</span>
+            <span class="section-num">Projects</span>
             <h1 class="page-title">Things I've built.</h1>
             <p class="page-lead">
                 Side projects, work-adjacent experiments, and the occasional finished thing. Sorted by what I'm most proud of right now.
@@ -25,7 +25,6 @@ const projects = (await getCollection('projects')).sort(
                     description={project.data.description}
                     thumbnail={project.data.thumbnail}
                     slug={project.id}
-                    featured={project.data.featured}
                 />
             ))}
         </div>

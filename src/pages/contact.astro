@@ -5,12 +5,11 @@ import PageLayout from '@layouts/PageLayout.astro';
 <PageLayout title="Contact | Marcus Schimizzi" description="Get in touch with Marcus Schimizzi.">
     <div class="page contact">
         <header class="page-header">
-            <span class="section-num">N° · Contact</span>
+            <span class="section-num">Contact</span>
             <h1 class="page-title">Let's <em>talk.</em></h1>
             <p class="page-lead">
-                Feel free to fill out the form if there's something you'd like to chat about — or even if you'd just like to say hi.
+                Feel free to fill out the form if there's something you'd like to chat about — or even if you'd just like to say hi. No recruiters or solicitations, please.
             </p>
-            <p class="page-aside">(No solicitations, please.)</p>
         </header>
 
         <div id="success-msg" class="msg msg-success" hidden>
@@ -30,7 +29,7 @@ import PageLayout from '@layouts/PageLayout.astro';
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="What should I call you?"
+                    autocomplete="name"
                     required
                 />
             </div>
@@ -41,7 +40,7 @@ import PageLayout from '@layouts/PageLayout.astro';
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="Where should I send a reply?"
+                    autocomplete="email"
                     required
                 />
             </div>
@@ -52,13 +51,12 @@ import PageLayout from '@layouts/PageLayout.astro';
                     id="message"
                     name="message"
                     rows="5"
-                    placeholder="What would you like to chat about?"
                     required
                 ></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
-                Send message <span class="arr">→</span>
+                Send message
             </button>
         </form>
     </div>
@@ -134,13 +132,6 @@ import PageLayout from '@layouts/PageLayout.astro';
         line-height: 1.55;
         margin: 0 0 0.5rem;
     }
-    .page-aside {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--ink-dim);
-        letter-spacing: 0.04em;
-        margin: 0;
-    }
 
     .msg {
         padding: 1rem 1.25rem;
@@ -179,15 +170,10 @@ import PageLayout from '@layouts/PageLayout.astro';
         font-family: var(--font-sans);
         font-size: 1rem;
         color: var(--ink);
-        outline: none;
         transition: border-color 0.2s ease;
         border-radius: 0;
     }
     .field textarea { resize: vertical; min-height: 7rem; }
-    .field input::placeholder,
-    .field textarea::placeholder {
-        color: var(--ink-faint);
-    }
     .field input:focus,
     .field textarea:focus {
         border-color: var(--gold);
@@ -210,7 +196,5 @@ import PageLayout from '@layouts/PageLayout.astro';
         gap: 0.5rem;
         transition: background 0.2s ease, transform 0.2s ease;
     }
-    .submit-btn:hover { background: var(--gold-warm); transform: translateY(-1px); }
-    .submit-btn .arr { transition: transform 0.2s ease; }
-    .submit-btn:hover .arr { transform: translateX(3px); }
+    .submit-btn:hover { background: var(--gold-warm); }
 </style>

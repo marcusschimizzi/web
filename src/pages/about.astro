@@ -8,7 +8,7 @@ import { features } from '@/config';
 <PageLayout title="About | Marcus Schimizzi" description="Hi there! My name is Marcus. I'm a software engineer at Qualia working to make real estate transactions easier and more efficient.">
     <div class="page about">
         <header class="page-header">
-            <span class="section-num">N° · About</span>
+            <span class="section-num">About</span>
             <h1 class="page-title">Who am I?</h1>
         </header>
 
@@ -23,12 +23,12 @@ import { features } from '@/config';
                 <p>Hi there! My name is Marcus.</p>
                 <p>I'm currently employed as a software engineer at <strong>Qualia</strong> working to make real estate transactions easier and more efficient.</p>
                 <p>Outside of building software, I love to spend time traveling, reading (mostly nonfiction and biographies), worrying too much about my favorite sports teams, and cooking.</p>
-                <a href="/docs/resume.pdf" class="btn-primary">Download résumé →</a>
+                <a href="/docs/resume.pdf" class="btn-primary">Download résumé</a>
             </div>
         </section>
 
         <section class="about-block">
-            <span class="section-num">N° 01 — What I do</span>
+            <span class="section-num">What I do</span>
             <div class="block-body">
                 <p>
                     At <strong>Qualia</strong>, I build systems that automate real estate title searches and exams on the Search &amp; Exam team — full-stack work spanning React, TypeScript, web scraping, and multi-agent orchestration.
@@ -40,7 +40,7 @@ import { features } from '@/config';
         </section>
 
         <section class="about-block">
-            <span class="section-num">N° 02 — How I work</span>
+            <span class="section-num">How I work</span>
             <div class="block-body">
                 <p>
                     I care about fast page loads, clean interfaces, and code that's easy to come back to six months later. I'd rather ship something simple that works well than something clever that's hard to maintain.
@@ -52,7 +52,7 @@ import { features } from '@/config';
         </section>
 
         <section class="about-block">
-            <span class="section-num">N° 03 — Outside of work</span>
+            <span class="section-num">Outside of work</span>
             <div class="block-body">
                 <p>
                     I'm a <strong>Notre Dame</strong> alum (BSE in Computer Science, class of 2019) living in <strong>Chicago</strong>. During college I spent a semester studying abroad in London, which remains one of my favorite cities.
@@ -75,19 +75,16 @@ import { features } from '@/config';
         <!-- Cross-links -->
         <section class="cross-links">
             <a href="/projects" class="cross-link">
-                <span class="cross-num">→ 01</span>
                 <span class="cross-label">See what I've built</span>
                 <span class="cross-sub">Projects</span>
             </a>
             {features.blog && (
                 <a href="/blog" class="cross-link">
-                    <span class="cross-num">→ 02</span>
                     <span class="cross-label">Read my thoughts</span>
                     <span class="cross-sub">Writing</span>
                 </a>
             )}
             <a href="/experience" class="cross-link">
-                <span class="cross-num">→ 03</span>
                 <span class="cross-label">Where I've worked</span>
                 <span class="cross-sub">Experience</span>
             </a>
@@ -169,7 +166,7 @@ import { features } from '@/config';
         text-decoration: none;
         transition: background 0.2s ease, transform 0.2s ease;
     }
-    .btn-primary:hover { background: var(--gold-warm); transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--gold-warm); }
 
     .about-block {
         margin-top: 4rem;
@@ -233,13 +230,6 @@ import { features } from '@/config';
     .cross-link:hover {
         border-color: var(--gold);
         transform: translateY(-2px);
-    }
-    .cross-num {
-        font-family: var(--font-mono);
-        font-size: 0.6875rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--gold);
     }
     .cross-label {
         font-family: var(--font-sans);

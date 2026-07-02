@@ -48,7 +48,7 @@ const {
         )}
 
         <header class="page-header">
-            <span class="section-num">N° · Project</span>
+            <span class="section-num">Project</span>
             <h1 class="page-title">{title}</h1>
             <p class="page-lead">{description}</p>
         </header>
@@ -56,10 +56,12 @@ const {
         {demoVideo && (
             <video
                 src={demoVideo}
+                poster={demoVideo.replace(/\.webm$/, '-poster.jpg')}
                 controls
                 muted
                 loop
                 playsinline
+                preload="metadata"
                 class="demo-video"
             />
         )}

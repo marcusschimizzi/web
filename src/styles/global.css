@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Besley:ital,wght@1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -28,7 +28,7 @@
 
     --font-sans:  'Geist', Helvetica, Arial, sans-serif;
     --font-mono:  'Geist Mono', ui-monospace, monospace;
-    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-serif: 'Besley', Georgia, serif;
 }
 
 html {
@@ -39,32 +39,33 @@ body {
     background-color: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "ss02", "cv11";
     min-height: 100vh;
     position: relative;
-}
-
-/* Subtle global grain — adds the "luxe" tactile feel without being noisy */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.03;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Keep real content above the grain layer */
-body > * {
-    position: relative;
-    z-index: 2;
 }
 
 ::selection {
     background: var(--gold);
     color: var(--paper);
+}
+
+/* Keyboard focus: same gold language as hover, offset echoes the hairline-rule grammar */
+:focus-visible {
+    outline: 1px solid var(--gold);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0.01ms !important; /* staggered entrances hide content for the delay's length */
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Default link treatment inside prose-free regions: gold underline */
@@ -115,12 +116,6 @@ a {
     background: transparent;
     padding: 0;
     color: inherit;
-}
-
-@keyframes gradientShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 @keyframes rise {

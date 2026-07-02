@@ -7,10 +7,9 @@ interface Props {
     description: string;
     thumbnail: ImageMetadata;
     slug: string;
-    featured?: boolean;
 }
 
-const { title, description, thumbnail, slug, featured = false } = Astro.props;
+const { title, description, thumbnail, slug } = Astro.props;
 ---
 
 <a href={`/projects/${slug}`} class="project-card group">
@@ -23,21 +22,12 @@ const { title, description, thumbnail, slug, featured = false } = Astro.props;
             class="thumb-img"
         />
         <div class="thumb-overlay"></div>
-        {featured && (
-            <span class="featured-tag" aria-label="Featured project">
-                <span class="featured-dot"></span>
-                Featured
-            </span>
-        )}
     </div>
 
     <div class="card-body">
         <h2 class="card-title">{title}</h2>
         <p class="card-desc">{description}</p>
-        <span class="card-cta">
-            <span>Read more</span>
-            <span class="arr">→</span>
-        </span>
+        <span class="card-cta">Read more</span>
     </div>
 </a>
 
@@ -81,29 +71,6 @@ const { title, description, thumbnail, slug, featured = false } = Astro.props;
         pointer-events: none;
     }
 
-    .featured-tag {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5ch;
-        padding: 0.3rem 0.6rem;
-        font-family: var(--font-mono);
-        font-size: 0.625rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--gold);
-        background: rgba(5, 5, 5, 0.7);
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(230, 181, 74, 0.3);
-    }
-    .featured-dot {
-        width: 6px; height: 6px;
-        background: var(--gold);
-        display: inline-block;
-    }
-
     .card-body {
         padding: 1.5rem;
         flex: 1;
@@ -141,6 +108,4 @@ const { title, description, thumbnail, slug, featured = false } = Astro.props;
         transition: color 0.2s ease;
     }
     .project-card:hover .card-cta { color: var(--gold); }
-    .card-cta .arr { transition: transform 0.3s ease; }
-    .project-card:hover .card-cta .arr { transform: translateX(4px); }
 </style>
