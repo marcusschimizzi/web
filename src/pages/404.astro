@@ -12,10 +12,7 @@ import { features } from '@/config';
         <p class="msg">
             The page you're looking for doesn't exist or has been moved. Let's get you back on track.
         </p>
-        <a href="/" class="btn">
-            <span>Go home</span>
-            <span class="arr">→</span>
-        </a>
+        <a href="/" class="btn">Go home</a>
 
         <div class="quick">
             <p class="quick-label">Quick links</p>
@@ -87,9 +84,7 @@ import { features } from '@/config';
         text-decoration: none;
         transition: background 0.2s ease, transform 0.2s ease;
     }
-    .btn:hover { background: var(--gold-warm); transform: translateY(-1px); }
-    .btn .arr { transition: transform 0.2s ease; }
-    .btn:hover .arr { transform: translateX(3px); }
+    .btn:hover { background: var(--gold-warm); }
 
     .quick {
         margin-top: 3rem;

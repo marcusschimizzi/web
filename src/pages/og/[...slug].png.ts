@@ -1,5 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
+import { features } from '../../config';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 
@@ -30,7 +31,7 @@ async function loadFonts(): Promise<{ regular: ArrayBuffer; medium: ArrayBuffer;
     const [regular, medium, italicSerif] = await Promise.all([
         fetchFont('https://fonts.googleapis.com/css2?family=Geist:wght@400'),
         fetchFont('https://fonts.googleapis.com/css2?family=Geist:wght@500'),
-        fetchFont('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1'),
+        fetchFont('https://fonts.googleapis.com/css2?family=Besley:ital,wght@1,400'),
     ]);
     fontCache = { regular, medium, italicSerif };
     return fontCache;
@@ -131,7 +132,7 @@ function buildOGMarkup(title: string): Record<string, unknown> {
                             {
                                 type: 'div',
                                 props: {
-                                    style: { display: 'flex', color: '#e6b54a', fontFamily: 'Instrument Serif', fontStyle: 'italic', fontSize: 24, textTransform: 'none' },
+                                    style: { display: 'flex', color: '#e6b54a', fontFamily: 'Besley', fontStyle: 'italic', fontSize: 24, textTransform: 'none' },
                                     children: 'reliable things.',
                                 },
                             },
@@ -144,19 +145,26 @@ function buildOGMarkup(title: string): Record<string, unknown> {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+    // Every page that SEOHead derives an og:image URL for needs an entry here.
     const pages: Array<{ slug: string; title: string }> = [
         { slug: 'index', title: 'Marcus Schimizzi' },
         { slug: 'about', title: 'About' },
         { slug: 'projects', title: 'Projects' },
         { slug: 'experience', title: 'Experience' },
-        { slug: 'blog', title: 'Writing' },
         { slug: 'contact', title: 'Contact' },
+        { slug: 'uses', title: 'Uses' },
+        { slug: 'now', title: 'Now' },
+        { slug: 'colophon', title: 'Colophon' },
+        { slug: '404', title: 'Not found' },
     ];
 
-    const blogPosts = await getCollection('blog');
-    for (const post of blogPosts) {
-        if (!post.data.draft) {
-            pages.push({ slug: `blog/${post.id}`, title: post.data.title });
+    if (features.blog) {
+        pages.push({ slug: 'blog', title: 'Writing' });
+        const blogPosts = await getCollection('blog');
+        for (const post of blogPosts) {
+            if (!post.data.draft) {
+                pages.push({ slug: `blog/${post.id}`, title: post.data.title });
+            }
         }
     }
 
@@ -181,7 +189,7 @@ export const GET: APIRoute = async ({ props }) => {
         fonts: [
             { name: 'Geist', data: fonts.regular, weight: 400, style: 'normal' as const },
             { name: 'Geist', data: fonts.medium, weight: 500, style: 'normal' as const },
-            { name: 'Instrument Serif', data: fonts.italicSerif, weight: 400, style: 'italic' as const },
+            { name: 'Besley', data: fonts.italicSerif, weight: 400, style: 'italic' as const },
         ],
     });
 

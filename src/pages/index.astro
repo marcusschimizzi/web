@@ -31,24 +31,15 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
 >
     <Nav />
 
-    <!-- Fixed gold edge marker (luxe brand detail) -->
-    <div class="edge-marker" aria-hidden="true"></div>
-
     <main class="home" transition:animate="fade">
         <!-- HERO -->
         <section class="hero">
-            <div class="hero-eyebrow">
-                <span class="num">EST. 1997</span>
-                <span class="rule"></span>
-                <span>Portfolio · MMXXVI</span>
-            </div>
-
             <div class="hero-content">
                 <h1 class="headline">
                     <span class="line"><span>Software</span></span>
                     <span class="line"><span>engineer</span></span>
                     <span class="line"><span>building</span></span>
-                    <span class="line"><span><em id="rotor" data-words="creative,delightful,useful,considered,reliable,thoughtful,durable,useful">reliable</em> things.</span></span>
+                    <span class="line"><span><em id="rotor" data-words="creative,delightful,useful,considered,reliable,thoughtful,durable">reliable</em> things.</span></span>
                 </h1>
 
                 <Epithets />
@@ -64,19 +55,15 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
                     </div>
                     <div>
                         <span class="label">Available</span>
-                        <span class="value"><a href="/contact">Open to a conversation →</a></span>
+                        <span class="value"><a href="/contact">Open to a conversation</a></span>
                     </div>
                 </div>
-            </div>
-
-            <div class="scroll-cue" aria-hidden="true">
-                <span>Scroll</span>
             </div>
         </section>
 
         <!-- INTRO -->
         <section class="intro">
-            <div class="section-num">N° 01 — Introduction</div>
+            <div class="section-num">Introduction</div>
             <div class="intro-body">
                 <p class="intro-lead">A builder and tinkerer at heart, always working on a side project <span class="accent">(or five).</span></p>
                 <p class="intro-detail">
@@ -88,8 +75,8 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         <!-- SELECTED WORK -->
         <section class="work">
             <div class="work-header">
-                <span class="section-num">N° 02 — Selected Work</span>
-                <a href="/projects" class="view-all">View all <span class="arr">→</span></a>
+                <span class="section-num">Selected Work</span>
+                <a href="/projects" class="view-all">View all</a>
             </div>
 
             <ul class="work-list">
@@ -110,7 +97,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
                                     </>
                                 ))}
                             </span>
-                            <span class="work-arrow">→</span>
                         </a>
                     </li>
                 ))}
@@ -121,8 +107,8 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         {latestPost && (
             <section class="latest-post">
                 <div class="work-header">
-                    <span class="section-num">N° 03 — Latest Writing</span>
-                    <a href="/blog" class="view-all">All posts <span class="arr">→</span></a>
+                    <span class="section-num">Latest Writing</span>
+                    <a href="/blog" class="view-all">All posts</a>
                 </div>
                 <a href={`/blog/${latestPost.id}`} class="latest-card">
                     <div class="latest-meta">
@@ -170,31 +156,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         margin: 0 auto;
     }
 
-    /* Fixed gold edge marker — luxe brand detail */
-    .edge-marker {
-        position: fixed;
-        top: 0;
-        right: clamp(1.25rem, 3vw, 3rem);
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(to bottom, transparent 0%, var(--rule) 12%, var(--rule) 88%, transparent 100%);
-        z-index: 3;
-        pointer-events: none;
-    }
-    .edge-marker::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -2.5px;
-        width: 6px;
-        height: 80px;
-        background: var(--gold);
-        transform: translateY(-50%);
-    }
-    @media (max-width: 800px) {
-        .edge-marker { display: none; }
-    }
-
     /* ─── HERO ─────────────────────────────────────── */
     .hero {
         min-height: 100vh;
@@ -204,24 +165,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         padding: 7rem clamp(1.25rem, 3vw, 3rem) 4rem;
         position: relative;
     }
-
-    .hero-eyebrow {
-        position: absolute;
-        top: 7rem;
-        left: clamp(1.25rem, 3vw, 3rem);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-family: var(--font-mono);
-        font-size: 0.6875rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--ink-dim);
-        opacity: 0;
-        animation: fadeIn 1s ease-out 0.6s forwards;
-    }
-    .hero-eyebrow .rule { width: 36px; height: 1px; background: var(--rule-strong); }
-    .hero-eyebrow .num { color: var(--gold); }
 
     .hero-content {
         display: grid;
@@ -236,7 +179,9 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         letter-spacing: -0.045em;
         line-height: 0.88;
         color: var(--ink);
-        font-size: clamp(3rem, 12vw, 12rem);
+        /* Sized so the longest rotor word fits the fourth line in Besley Italic
+           at every viewport — measured, not eyeballed. */
+        font-size: clamp(2.25rem, 11.4vw, 11rem);
         max-width: 14ch;
         margin: 0;
     }
@@ -260,8 +205,10 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         color: var(--gold);
         font-weight: 400;
         letter-spacing: -0.02em;
+        /* Besley's x-height runs large next to Geist; 0.92em optically matches */
+        font-size: 0.92em;
         position: relative;
-        top: 0.04em;
+        top: 0.02em;
     }
 
     /* Adjective inside the headline. JS picks one at page load and it stays
@@ -303,29 +250,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         transition: color 0.3s ease;
     }
     .hero-meta .value a:hover { color: var(--gold); }
-
-    .scroll-cue {
-        position: absolute;
-        bottom: 4rem;
-        right: clamp(1.25rem, 3vw, 3rem);
-        font-family: var(--font-mono);
-        font-size: 0.6875rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--ink-dim);
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-        opacity: 0;
-        animation: fadeIn 1s ease-out 1.4s forwards;
-    }
-    .scroll-cue::before {
-        content: '';
-        width: 1px; height: 60px;
-        background: linear-gradient(to bottom, var(--ink-dim), transparent);
-    }
 
     /* ─── INTRO ───────────────────────────────────── */
     .intro {
@@ -398,8 +322,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         transition: color 0.3s ease;
     }
     .view-all:hover { color: var(--gold); }
-    .view-all .arr { transition: transform 0.3s ease; }
-    .view-all:hover .arr { transform: translateX(4px); }
 
     .work-list {
         list-style: none;
@@ -409,7 +331,7 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
 
     .work-item {
         display: grid;
-        grid-template-columns: 0.6fr 4fr 2.5fr 1.4fr 0.6fr;
+        grid-template-columns: 0.6fr 4fr 2.5fr 1.4fr;
         align-items: center;
         padding: 2.25rem 0;
         border-bottom: 1px solid var(--rule);
@@ -488,17 +410,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         justify-content: flex-end;
     }
     .work-meta .dot { color: var(--ink-faint); }
-    .work-arrow {
-        text-align: right;
-        font-family: var(--font-mono);
-        font-size: 1rem;
-        color: var(--ink-faint);
-        transition: color 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1);
-    }
-    .work-item:hover .work-arrow {
-        color: var(--gold);
-        transform: translateX(0.5rem);
-    }
 
     /* ─── LATEST POST ─────────────────────────────── */
     .latest-post {
@@ -565,11 +476,11 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         .hero-meta { grid-template-columns: 1fr; gap: 1.75rem; padding-top: 2rem; }
         .intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 5rem clamp(1.25rem, 3vw, 3rem) 4rem; }
         .work-item {
-            grid-template-columns: 0.7fr 4fr 1fr;
+            grid-template-columns: 0.7fr 5fr;
             grid-template-areas:
-                "num name arr"
-                ".   desc desc"
-                ".   meta meta";
+                "num name"
+                ".   desc"
+                ".   meta";
             row-gap: 0.5rem;
             padding: 1.75rem 0;
         }
@@ -577,8 +488,6 @@ const latestPostDate = latestPost?.data.pubDate.toLocaleDateString('en-US', {
         .work-name { grid-area: name; font-size: clamp(1.5rem, 7vw, 2rem); }
         .work-desc { grid-area: desc; }
         .work-meta { grid-area: meta; justify-content: flex-start; }
-        .work-arrow{ grid-area: arr; }
         .work-item:hover .work-name { transform: none; }
-        .scroll-cue { display: none; }
     }
 </style>
